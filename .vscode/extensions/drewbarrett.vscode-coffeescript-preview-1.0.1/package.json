@@ -1,0 +1,64 @@
+{
+	"name": "vscode-coffeescript-preview",
+	"displayName": "CoffeeScript Preview",
+	"description": "Provides on demand compilation of CoffeeScript files for inspection",
+	"version": "1.0.1",
+	"publisher": "drewbarrett",
+	"galleryBanner": {
+		"color": "#0099cc",
+		"theme": "light"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"bugs": {
+		"url": "https://github.com/dcbarrett/vscode-coffeescript-preview/issues",
+		"email": "dcbarr11@gmail.com"
+	},
+	"homepage": "https://github.com/dcbarrett/vscode-coffeescript-preview/blob/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dcbarrett/vscode-coffeescript-preview.git"
+	},
+	"engines": {
+		"vscode": "^1.0.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.coffeescript-preview"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.coffeescript-preview",
+				"title": "CoffeeScript Preview"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.coffeescript-preview",
+				"key": "ctrl+shift+/",
+				"when": "editorTextFocus && editorLangId == 'coffeescript'"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"sinon": "^1.17.3",
+		"typescript": "^1.8.5",
+		"vscode": "^0.11.0"
+	},
+	"dependencies": {
+		"coffeescript": "^2.3.1"
+	},
+	"__metadata": {
+		"id": "c2c6cc15-8f19-4bb7-82de-67824296d12d",
+		"publisherId": "16cc6c4c-ddd4-4b2a-8101-76a7d93ff72a",
+		"publisherDisplayName": "Drew Barrett"
+	}
+}

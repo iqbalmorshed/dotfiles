@@ -1,0 +1,126 @@
+;;Iqbal Note:
+;; use tab to format after editing
+;; specific rule should come first
+;; generic rules should come next
+;;======================================
+
+;; :!Ca is keycode :a and prefix a with !C
+
+    ;; C  | left_command
+    ;; T  | left_control
+    ;; O  | left_option
+    ;; S  | left_shift
+    ;; F  | fn
+    ;; Q  | right_command
+    ;; W  | right_control
+    ;; E  | right_option
+    ;; R  | right_shift
+    ;; P  | caps_lock
+    ;; !! | command + control + optional + shift (hyper)
+    
+    ;; code for all this:
+    ;; https://github.com/yqrashawn/GokuRakuJoudo/blob/b9b334a187379f9bc8182ad59e2cca2a1789e9c0/src/karabiner_configurator/keys.clj#L68
+
+    ;; to understand better how modifiers work in karabiner
+    ;; karabiner definition of mandatory and optional
+    ;; https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/from/modifiers/
+
+    ;; !  | mandatory
+    ;;                  modifier *has* to be present for event to occur
+    ;;                  modifier is removed in output (to event)
+    ;; #  | optional (single)
+    ;;                  one of the optional modifiers has to exist but not all
+    ;;                  only this modifier has to exist, combining with another won't work
+    ;;                  modifier is kept in output (to event)
+    ;; ## | optional any
+    ;;                  what you would expect, everything is tacked on
+
+    ;; need to prefix C T O S F with ! or #
+    ;;
+
+    {:profiles {:Default {:default true
+                          :sim 100
+                          :delay 500
+                          :alone 500
+                          :held 500}}
+     :applications {:Chrome ["^com\\.google\\.Chrome$"] :browsers ["^com\\.google\\.Chrome$" "^com\\.apple\\.Safari$"]}
+     :layers {:caps_mode {:key :caps_lock :alone {:key :escape}}
+              :tab_mode {:key :tab}
+              :chrome_mode {:key :caps_lock :condi :Chrome}}
+
+     :simlayers {:comma_mode {:key :comma}} ;; templates
+
+     :templates {:km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
+                 :open "open \"%s\""
+                 :hsl        "/usr/local/bin/hs -A -n -q -t 0.1 -c 'hs.application.launchOrFocus(\"%s\")'"}
+
+     :main [;; 	 {:des "a to 1, b to 2, c to insert 1 2 3"
+            ;;  :rules [[:left_command :left_command nil {:alone :!Cd}]fkjkkjjkjjljlfjadf sfjsdlfjlj sfsjdlfjla fljljkklj sfsdlfjlsj flsjflsjdf
+            ;;          [{:key :spacebar :modi :left_shift} [:spacebar :equal_sign :spacebar]]
+            ;; 							  ; = 
+            ;;          ]}
+            {:des "when inside browsers"
+             :rules [:chrome_mode
+                     ;;[:##v :!Cw]
+                     [:##j :!COleft_arrow] ;;previous tab
+                     [:##k [:km "Chrome: scroll down"]]
+                     [:##i [:km "Chrome: scroll up"]]
+                     [:##l :!COright_arrow] ;;next tab
+                     [:##h :!Cw]
+                     [:##semicolon :!Ct]
+                     [:##y :!C1]
+                     [:##u :!C2]
+                     [:##o :!C9]
+                     [:##p :!Cp]]
+             } ;;close tab
+      				 
+            {:des "caps lock layer"
+             :rules [:caps_mode
+                     [:##j :left_arrow :!browsers]
+                     [:##k :down_arrow :!browsers]
+                     [:##i :up_arrow :!browsers]
+                     [:##l :right_arrow :!browsers]
+                     [:##h :delete_or_backspace :!browsers]
+                     [:##semicolon :return_or_enter :!browsers]
+                     [:##u :!Cleft_arrow :!browsers]
+                     [:##o :!Cright_arrow :!browsers]
+                     [:##p :!Cp]
+                     [:##m :!Cm]
+                     [:##n :!Cn]
+                     [:##spacebar :!Cspacebar]]}
+      		;; {:des "semicolon layer"
+            ;;  :rules [:semicolon_mode
+            ;;          [:r [:semicolon :g]]]}
+            {:des "Open application"
+             :rules [;;  [[:semicolon :a] :!CTOa]
+                    ;;  [[:semicolon :b] :!CTOb]
+                     [[:semicolon :c] [:km "Chrome: Open Personal profile"]]
+                    ;;  [[:semicolon :d] :!CTOd]
+                     [[:semicolon :e] [:km "Evernote: Activate"]]
+                     [[:semicolon :f] [:km "Foxit Reader: Activate"]]
+                     [[:semicolon :g] [:km "Github Desktop: Activate"]]
+                    ;;  [[:semicolon :h] :!CTOh]
+                    ;;  [[:semicolon :i] :!CTOi]
+                    ;;  [[:semicolon :j] :!CTOj]
+                    ;;  [[:semicolon :k] :!CTOk]
+                    ;;  [[:semicolon :l] :!CTOl]
+                    ;;  [[:semicolon :m] :!CTOm]
+                     ;[[:semicolon :n] [:km "Notion: Activate"]]
+                    ;;  [[:semicolon :o] :!CTOo]
+                    ;;  [[:semicolon :p] :!CTOp]
+                    ;;  [[:semicolon :q] :!CTOq]
+                    ;;  [[:semicolon :r] :!CTOr]
+                     [[:semicolon :s] [:km "Slack: Activate"]]
+                     ;;[[:semicolon :s] [:hsl "Slack"]] ;;check later
+                     ;
+                     [[:semicolon :t] [:km "Terminal: activate"]]
+                    ;;  [[:semicolon :u] :!CTOu]
+                    ;;  [[:semicolon :v] :!CTOv]
+                     [[:semicolon :w] [:km "Chrome: Open Work Profile"]]
+                    ;;  [[:semicolon :x] :!CTOx]
+                    ;;  [[:semicolon :y] :!CTOy]
+                    ;;  [[:semicolon :z] :!CTOz]
+                     [[:a :p] [:km "VSCode: Open Project"]]
+                     [[:a :n] [:km "Notion: Activate"]]
+                    ;[[:a :z] :!CTOz]
+                     ]}]}
