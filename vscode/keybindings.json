@@ -61,5 +61,14 @@
         "key": "cmd+up",
         "command": "-selectPrevSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "shift+alt+`",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "shift+alt+`",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
     }
 ]

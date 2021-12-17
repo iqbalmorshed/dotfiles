@@ -43,10 +43,13 @@
                           :delay 500
                           :alone 1000
                           :held 500}}
-     :applications {:Chrome ["^com\\.google\\.Chrome$"] :browsers ["^com\\.google\\.Chrome$" "^com\\.apple\\.Safari$"]}
+     :applications {:Chrome ["^com\\.google\\.Chrome$"] 
+                    :browsers ["^com\\.google\\.Chrome$" "^com\\.apple\\.Safari$"]
+                    :VSCode ["^com\\.microsoft\\.VSCode?$"]}
      :layers {:caps_mode {:key :caps_lock :alone {:key :escape}}
               :tab_mode {:key :tab}
-              :chrome_mode {:key :caps_lock :condi :Chrome}}
+              :chrome_mode {:key :caps_lock :condi :Chrome}
+              :vscode_mode {:key :caps_lock :condi :VSCode}}
 
      :simlayers {:comma_mode {:key :comma}} ;; templates
 
@@ -71,9 +74,24 @@
                      [:##y :!C1]
                      [:##u :!C2]
                      [:##o :!C9]
-                     [:##p :!Cp]]
-             } ;;close tab
-      				 
+                     [:##p :!Cp]]} ;;close tab
+            {:des "when inside vscode"
+             :rules [:vscode_mode
+                     ;;[:##v :!Cw]
+                     [:##j :left_arrow]
+                     [:##k :down_arrow]
+                     [:##i :up_arrow]
+                     [:##l :right_arrow]
+                     [:##h :delete_or_backspace]
+                     [:##semicolon :return_or_enter]
+                     [:##u :!Cleft_arrow]
+                     [:##o :!Cright_arrow]
+                     [:##p :!Cp]
+                     [:##m :!CTf]
+                     [:##n :!Cm]
+                     [:##spacebar :!Cspacebar]
+
+                     [:y :!OSgrave_accent_and_tilde]]} ;;close tab
             {:des "caps lock layer"
              :rules [:caps_mode
                      [:##j :left_arrow :!browsers]
