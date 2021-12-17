@@ -91,7 +91,10 @@
                      [:##n :!Cm]
                      [:##spacebar :!Cspacebar]
 
-                     [:y :!OSgrave_accent_and_tilde]]} ;;close tab
+                     [:y :!OSgrave_accent_and_tilde] ;;switch from editor<->terminal
+                     [:comma :!CTcomma] ;;switch editor/terminal panel left
+                     [:period :!CTperiod] ;;swith editor/terminal right
+                     ]} ;;close tab
             {:des "caps lock layer"
              :rules [:caps_mode
                      [:##j :left_arrow :!browsers]
