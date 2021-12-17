@@ -39,9 +39,9 @@
     ;;
 
     {:profiles {:Default {:default true
-                          :sim 100
+                          :sim 50
                           :delay 500
-                          :alone 500
+                          :alone 1000
                           :held 500}}
      :applications {:Chrome ["^com\\.google\\.Chrome$"] :browsers ["^com\\.google\\.Chrome$" "^com\\.apple\\.Safari$"]}
      :layers {:caps_mode {:key :caps_lock :alone {:key :escape}}
@@ -85,8 +85,8 @@
                      [:##u :!Cleft_arrow :!browsers]
                      [:##o :!Cright_arrow :!browsers]
                      [:##p :!Cp]
-                     [:##m :!Cm]
-                     [:##n :!Cn]
+                     [:##m :!CTf]
+                     [:##n :!Cm]
                      [:##spacebar :!Cspacebar]]}
       		;; {:des "semicolon layer"
             ;;  :rules [:semicolon_mode
@@ -115,7 +115,7 @@
                      ;
                      [[:semicolon :t] [:km "Terminal: activate"]]
                     ;;  [[:semicolon :u] :!CTOu]
-                    ;;  [[:semicolon :v] :!CTOv]
+                     [[:semicolon :v] [:km "VSCode: Activate"]]
                      [[:semicolon :w] [:km "Chrome: Open Work Profile"]]
                     ;;  [[:semicolon :x] :!CTOx]
                     ;;  [[:semicolon :y] :!CTOy]

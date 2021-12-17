@@ -1025,9 +1025,9 @@
   }, {
     "complex_modifications" : {
       "parameters" : {
-        "basic.simultaneous_threshold_milliseconds" : 50,
+        "basic.simultaneous_threshold_milliseconds" : 100,
         "basic.to_delayed_action_delay_milliseconds" : 500,
-        "basic.to_if_alone_timeout_milliseconds" : 1000,
+        "basic.to_if_alone_timeout_milliseconds" : 500,
         "basic.to_if_held_down_threshold_milliseconds" : 500
       },
       "rules" : [ {
@@ -1429,8 +1429,8 @@
             }
           },
           "to" : [ {
-            "key_code" : "f",
-            "modifiers" : [ "left_command", "left_control" ]
+            "key_code" : "m",
+            "modifiers" : [ "left_command" ]
           } ],
           "conditions" : [ {
             "name" : "caps_mode",
@@ -1446,7 +1446,7 @@
             }
           },
           "to" : [ {
-            "key_code" : "m",
+            "key_code" : "n",
             "modifiers" : [ "left_command" ]
           } ],
           "conditions" : [ {
@@ -1581,24 +1581,6 @@
           },
           "to" : [ {
             "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Terminal: activate\"'"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "simultaneous" : [ {
-              "key_code" : "semicolon"
-            }, {
-              "key_code" : "v"
-            } ],
-            "simultaneous_options" : {
-              "detect_key_down_uninterruptedly" : false,
-              "key_down_order" : "insensitive",
-              "key_up_order" : "insensitive",
-              "key_up_when" : "any"
-            }
-          },
-          "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"VSCode: Activate\"'"
           } ],
           "type" : "basic"
         }, {
