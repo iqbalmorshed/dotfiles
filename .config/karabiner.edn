@@ -48,10 +48,11 @@
                     :VSCode ["^com\\.microsoft\\.VSCode?$"]}
      :layers {:caps_mode {:key :caps_lock :alone {:key :escape}}
               :tab_mode {:key :tab}
-              :chrome_mode {:key :caps_lock :condi :Chrome}
-              :vscode_mode {:key :caps_lock :condi :VSCode}}
+              :chrome_mode {:key :caps_lock :alone {:key :escape} :condi :Chrome }
+              :vscode_mode {:key :caps_lock :alone {:key :escape} :condi :VSCode}}
 
-     :simlayers {:slash_mode {:key :slash}} ;; templates
+     :simlayers {:slash_mode {:key :slash}
+                 :vscode_slash_mode {:key :slash :condi :VSCode}} ;; templates
 
      :templates {:km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
                  :open "open \"%s\""
@@ -97,7 +98,10 @@
                      [:period :!CTperiod] ;;swith editor/terminal right
                      [:backslash :!Cbackslash]
                      [:open_bracket :!CTSleft_arrow]
-                     [:close_bracket :!CTSright_arrow]]} ;;close tab
+                     [:close_bracket :!CTSright_arrow]
+               		 [:quote :!!m]			 
+                     :vscode_slash_mode
+                     [:##d :!Cd]]} ;;close tab
             {:des "caps lock layer"
              :rules [:caps_mode
                      [:##j :left_arrow :!browsers]
@@ -118,12 +122,13 @@
             ;;          [:r [:semicolon :g]]]}
             {:des "Tab mode layer"
              :rules [:tab_mode
-                     [:##j :!TO7]
-                     [:##k :!TO6]
-                     ;[:##i :!TO5]
-                     [:##l :!TO5]
-                     ;[:##h :delete_or_backspace]
-                     [:##semicolon :!TO4]]}
+                     [:##j :!TO7] ;btt: click left monitor left half
+                     [:##k :!TO6] ;btt: click left monitor right half
+                     [:##l :!TO5] ;btt: click right monitor left half
+                     [:##semicolon :!TO4] ;btt: click right monitor right half
+                     [:##h :!Tleft_arrow] ;switch desktop left
+                     [:##quote :!Tright_arrow] ;switch desktop right
+               					 ]}
             ;; {:des "Open application"
             ;;  :rules [[[:semicolon :c] [:km "Chrome: Open Personal profile"]]
             ;;          [[:semicolon :e] [:km "Evernote: Activate"]]
