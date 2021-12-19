@@ -51,7 +51,7 @@
               :chrome_mode {:key :caps_lock :condi :Chrome}
               :vscode_mode {:key :caps_lock :condi :VSCode}}
 
-     :simlayers {:comma_mode {:key :comma}} ;; templates
+     :simlayers {:slash_mode {:key :slash}} ;; templates
 
      :templates {:km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
                  :open "open \"%s\""
@@ -90,11 +90,14 @@
                      [:##m :!CTf]
                      [:##n :!Cm]
                      [:##spacebar :!Cspacebar]
+                     [:f :left_shift :!browsers]
 
                      [:y :!OSgrave_accent_and_tilde] ;;switch from editor<->terminal
                      [:comma :!CTcomma] ;;switch editor/terminal panel left
                      [:period :!CTperiod] ;;swith editor/terminal right
-                     ]} ;;close tab
+                     [:backslash :!Cbackslash]
+                     [:open_bracket :!CTSleft_arrow]
+                     [:close_bracket :!CTSright_arrow]]} ;;close tab
             {:des "caps lock layer"
              :rules [:caps_mode
                      [:##j :left_arrow :!browsers]
@@ -108,40 +111,39 @@
                      [:##p :!Cp]
                      [:##m :!CTf]
                      [:##n :!Cm]
-                     [:##spacebar :!Cspacebar]]}
+                     [:##spacebar :!Cspacebar]
+                     [:f :left_shift :!browsers]]}
       		;; {:des "semicolon layer"
             ;;  :rules [:semicolon_mode
             ;;          [:r [:semicolon :g]]]}
+            {:des "Tab mode layer"
+             :rules [:tab_mode
+                     [:##j :!TO7]
+                     [:##k :!TO6]
+                     ;[:##i :!TO5]
+                     [:##l :!TO5]
+                     ;[:##h :delete_or_backspace]
+                     [:##semicolon :!TO4]]}
+            ;; {:des "Open application"
+            ;;  :rules [[[:semicolon :c] [:km "Chrome: Open Personal profile"]]
+            ;;          [[:semicolon :e] [:km "Evernote: Activate"]]
+            ;;          [[:semicolon :f] [:km "Foxit Reader: Activate"]]
+            ;;          [[:semicolon :g] [:km "Github Desktop: Activate"]]
+            ;;          [[:semicolon :s] [:km "Slack: Activate"]]
+            ;;          [[:semicolon :t] [:km "Terminal: activate"]]
+            ;;          [[:semicolon :v] [:km "VSCode: Activate"]]
+            ;;          [[:semicolon :w] [:km "Chrome: Open Work Profile"]]
+            ;;          [[:a :p] [:km "VSCode: Open Project"]]
+            ;;          [[:a :n] [:km "Notion: Activate"]]]}
             {:des "Open application"
-             :rules [;;  [[:semicolon :a] :!CTOa]
-                    ;;  [[:semicolon :b] :!CTOb]
-                     [[:semicolon :c] [:km "Chrome: Open Personal profile"]]
-                    ;;  [[:semicolon :d] :!CTOd]
-                     [[:semicolon :e] [:km "Evernote: Activate"]]
-                     [[:semicolon :f] [:km "Foxit Reader: Activate"]]
-                     [[:semicolon :g] [:km "Github Desktop: Activate"]]
-                    ;;  [[:semicolon :h] :!CTOh]
-                    ;;  [[:semicolon :i] :!CTOi]
-                    ;;  [[:semicolon :j] :!CTOj]
-                    ;;  [[:semicolon :k] :!CTOk]
-                    ;;  [[:semicolon :l] :!CTOl]
-                    ;;  [[:semicolon :m] :!CTOm]
-                     ;[[:semicolon :n] [:km "Notion: Activate"]]
-                    ;;  [[:semicolon :o] :!CTOo]
-                    ;;  [[:semicolon :p] :!CTOp]
-                    ;;  [[:semicolon :q] :!CTOq]
-                    ;;  [[:semicolon :r] :!CTOr]
-                     [[:semicolon :s] [:km "Slack: Activate"]]
-                     ;;[[:semicolon :s] [:hsl "Slack"]] ;;check later
-                     ;
-                     [[:semicolon :t] [:km "Terminal: activate"]]
-                    ;;  [[:semicolon :u] :!CTOu]
-                     [[:semicolon :v] [:km "VSCode: Activate"]]
-                     [[:semicolon :w] [:km "Chrome: Open Work Profile"]]
-                    ;;  [[:semicolon :x] :!CTOx]
-                    ;;  [[:semicolon :y] :!CTOy]
-                    ;;  [[:semicolon :z] :!CTOz]
-                     [[:a :p] [:km "VSCode: Open Project"]]
-                     [[:a :n] [:km "Notion: Activate"]]
-                    ;[[:a :z] :!CTOz]
-                     ]}]}
+             :rules [:slash_mode
+                     [:c [:km "Chrome: Open Personal profile"]]
+                     [:e [:km "Evernote: Activate"]]
+                     [:f [:km "Foxit Reader: Activate"]]
+                     [:g [:km "Github Desktop: Activate"]]
+                     [:s [:km "Slack: Activate"]]
+                     [:t [:km "Terminal: activate"]]
+                     [:v [:km "VSCode: Activate"]]
+                     [:w [:km "Chrome: Open Work Profile"]]
+                     [:p [:km "VSCode: Open Project"]]
+                     [:n [:km "Notion: Activate"]]]}]}
