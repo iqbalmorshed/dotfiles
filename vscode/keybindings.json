@@ -98,5 +98,9 @@
         "key": "alt+cmd+up",
         "command": "-workbench.action.terminal.focusPreviousPane",
         "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+alt+cmd+s",
+        "command": "workbench.action.files.saveAll"
     }
 ]
