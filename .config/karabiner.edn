@@ -45,11 +45,13 @@
                           :held 500}}
      :applications {:Chrome ["^com\\.google\\.Chrome$"] 
                     :browsers ["^com\\.google\\.Chrome$" "^com\\.apple\\.Safari$"]
-                    :VSCode ["^com\\.microsoft\\.VSCode?$"]}
+                    :VSCode ["^com\\.microsoft\\.VSCode?$"]
+               		:Github ["^com\\.github\\.GitHubClient$"]			}
      :layers {:caps_mode {:key :caps_lock :alone {:key :escape}}
               :tab_mode {:key :tab}
-              :chrome_mode {:key :caps_lock :alone {:key :escape} :condi :Chrome }
-              :vscode_mode {:key :caps_lock :alone {:key :escape} :condi :VSCode}}
+              :chrome_mode {:key :caps_lock :alone {:key :escape} :condi :Chrome}
+              :vscode_mode {:key :caps_lock :alone {:key :escape} :condi :VSCode}
+         			  :github_mode {:key :caps_lock :alone {:key :escape} :condi :Github}}
 
      :simlayers {:slash_mode {:key :slash}
                  :vscode_slash_mode {:key :slash :condi :VSCode}} ;; templates
@@ -76,6 +78,17 @@
                      [:##u :!C2]
                      [:##o :!C9]
                      [:##p :!Cp]]} ;;close tab
+      		{:des "when inside Github"
+             :rules [:github_mode
+                     ;;[:##v :!Cw]
+                     [:##j :!C1] ;;changes
+                     [:##k :!C2] ;;history
+                     [:##i :!Cp] ;;push
+                     [:##l :!Cg] ;;next tab
+                     ;;[:##h :!Cw]
+                     [:##semicolon :!Creturn_or_enter]
+                    
+                     [:##p :!Ct]]} ;;close tab
             {:des "when inside vscode"
              :rules [:vscode_mode
                      ;;[:##v :!Cw]
@@ -98,9 +111,11 @@
                      [:comma :!CTcomma] ;;switch editor/terminal panel left
                      [:period :!CTperiod] ;;swith editor/terminal right
                      [:backslash :!Cbackslash]
-                     [:open_bracket :!CTSleft_arrow]
-                     [:close_bracket :!CTSright_arrow]
+                     [:open_bracket :!CTSleft_arrow] ;;increase selection
+                     [:close_bracket :!CTSright_arrow];;decrease selection
                      [:quote :!Cx]
+                     [:##c :!Cc]
+                     [:##v :!Cv]
                      :vscode_slash_mode
                      [:##f :!Cf] ;;search
                      [:##d :!Cd] ;;select word/multiple words
@@ -117,9 +132,10 @@
                      [:##u :!Cleft_arrow :!browsers]
                      [:##o :!Cright_arrow :!browsers]
                      [:##p :!Cp]
-
                      [:##spacebar :!Cspacebar]
-                     [:f :left_shift :!browsers]]}
+                     [:f :left_shift :!browsers]
+                     [:##c :!Cc]
+                     [:##v :!Cv]]}
       		;; {:des "semicolon layer"
             ;;  :rules [:semicolon_mode
             ;;          [:r [:semicolon :g]]]}
@@ -131,8 +147,10 @@
                      [:##semicolon :!TO4] ;btt: click right monitor right half
                      [:##h :!Tleft_arrow] ;switch desktop left
                      [:##quote :!Tright_arrow] ;switch desktop right
-                     [:##m :!CTf]
-                     [:##n :!Cm]]}
+                     [:##m :!CTf];full-screen or un-full-screen
+                     [:##n :!Cm] ;minimize
+                     ;[:slash :p]
+                     [:slash [:km "Window: switch full-screen window"]]]}
             ;; {:des "Open application"
             ;;  :rules [[[:semicolon :c] [:km "Chrome: Open Personal profile"]]
             ;;          [[:semicolon :e] [:km "Evernote: Activate"]]
