@@ -103,8 +103,9 @@
                      [:quote :!Cx]
                      :vscode_slash_mode
                      [:##f :!Cf] ;;search
-                     [:##d :!Cd]]
-					 } ;;close tab
+                     [:##d :!Cd] ;;select word/multiple words
+                     [:a :!Cs] ;;save all files
+                     ]} 
             {:des "caps lock layer"
              :rules [:caps_mode
                      [:##j :left_arrow :!browsers]
