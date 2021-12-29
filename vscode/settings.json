@@ -31,5 +31,7 @@
 	"security.workspace.trust.untrustedFiles": "open",
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.parameterHints.enabled": false,
+	"editor.suggest.showTypeParameters": false,
     //"editor.quickSuggestions": null
 }
