@@ -60,7 +60,7 @@
 
      :templates {:km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
                  :open "open \"%s\""
-            	 :code "/usr/local/bin/code \"%s\""
+            	 :code "/usr/local/bin/code \"%s\"" ;;full path of the app is needed if installed using brew
                  :hsl        "/usr/local/bin/hs -A -n -q -t 0.1 -c 'hs.application.launchOrFocus(\"%s\")'"}
 
      :main [;; 	 {:des "a to 1, b to 2, c to insert 1 2 3"
