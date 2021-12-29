@@ -110,5 +110,13 @@
     {
         "key": "cmd+s",
         "command": "-workbench.action.files.save"
+    },
+    {
+        "key": "ctrl+alt+cmd+]",
+        "command": "workbench.action.increaseViewWidth"
+    },
+    {
+        "key": "ctrl+alt+cmd+[",
+        "command": "workbench.action.decreaseViewWidth"
     }
 ]

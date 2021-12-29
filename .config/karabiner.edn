@@ -42,7 +42,7 @@
                           :sim 50
                           :delay 500
                           :alone 1000
-                          :held 500}}
+                          :held 100}}
      :applications {:Chrome ["^com\\.google\\.Chrome$"] 
                     :browsers ["^com\\.google\\.Chrome$" "^com\\.apple\\.Safari$"]
                     :VSCode ["^com\\.microsoft\\.VSCode?$"]
@@ -51,13 +51,16 @@
               :tab_mode {:key :tab}
               :chrome_mode {:key :caps_lock :alone {:key :escape} :condi :Chrome}
               :vscode_mode {:key :caps_lock :alone {:key :escape} :condi :VSCode}
-         			  :github_mode {:key :caps_lock :alone {:key :escape} :condi :Github}}
+              :github_mode {:key :caps_lock :alone {:key :escape} :condi :Github}
+             }
 
      :simlayers {:slash_mode {:key :slash}
-                 :vscode_slash_mode {:key :slash :condi :VSCode}} ;; templates
+                 :vscode_slash_mode {:key :slash :condi :VSCode}
+                 :return_mode {:key :return_or_enter :alone {:key :return_or_enter}}} ;; templates
 
      :templates {:km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
                  :open "open \"%s\""
+            	 :code "/usr/local/bin/code \"%s\""
                  :hsl        "/usr/local/bin/hs -A -n -q -t 0.1 -c 'hs.application.launchOrFocus(\"%s\")'"}
 
      :main [;; 	 {:des "a to 1, b to 2, c to insert 1 2 3"
@@ -68,11 +71,11 @@
             {:des "when inside browsers"
              :rules [:chrome_mode
                      ;;[:##v :!Cw]
-                     [:##j :!COleft_arrow] ;;previous tab
-                     [:##k [:km "Chrome: scroll down"]]
-                     [:##i [:km "Chrome: scroll up"]]
+                     [:##h :!COleft_arrow] ;;previous tab
+                     [:##j [:km "Chrome: scroll down"]]
+                     [:##k [:km "Chrome: scroll up"]]
                      [:##l :!COright_arrow] ;;next tab
-                     [:##h :!Cw]
+                     [:##n :!Cw]
                      [:##semicolon :!Ct]
                      [:##y :!C1]
                      [:##u :!C2]
@@ -87,22 +90,21 @@
                      [:##l :!Cg] ;;next tab
                      ;;[:##h :!Cw]
                      [:##semicolon :!Creturn_or_enter]
-                    
                      [:##p :!Ct]]} ;;close tab
             {:des "when inside vscode"
              :rules [:vscode_mode
                      ;;[:##v :!Cw]
-                     [:##j :left_arrow]
-                     [:##k :down_arrow]
-                     [:##i :up_arrow]
-                     [:##l :right_arrow]
-                     [:##h :delete_or_backspace]
-                     [:##u :!Cleft_arrow]
-                     [:##o :!Cright_arrow]
+                    [:##h :left_arrow :!browsers]
+                     [:##j :down_arrow :!browsers]
+                     [:##k :up_arrow :!browsers]
+                     [:##l :right_arrow :!browsers]
+                     [:##n :delete_or_backspace :!browsers]
+                     [:##semicolon :!Ssemicolon :!browsers]
+                     [:##u :!Cleft_arrow :!browsers]
+                     [:##o :!Cright_arrow :!browsers]
                      [:##p :!Cp]
                      [:##spacebar :!Cspacebar]
-                     [:f :left_shift]
-                     [:semicolon :return_or_enter]
+                     [:f :left_shift :!browsers]
 
                      [:d :left_option]
                      [:##m :!!m]
@@ -113,29 +115,31 @@
                      [:backslash :!Cbackslash]
                      [:open_bracket :!CTSleft_arrow] ;;increase selection
                      [:close_bracket :!CTSright_arrow];;decrease selection
-                     [:quote :!Cx]
-                     [:##c :!Cc]
-                     [:##v :!Cv]
-                     :vscode_slash_mode
-                     [:##f :!Cf] ;;search
-                     [:##d :!Cd] ;;select word/multiple words
-                     [:a :!Cs] ;;save all files
+                     [:quote :!Squote]
+                     [:slash :!Cz]
+                     [:9 :!CTOopen_bracket]
+                     [:0 :!CTOclose_bracket]
+                     ;:vscode_slash_mode
+                     ;[:##f :!Cf] ;;search
+                     ;[:##d :!Cd] ;;select word/multiple words
+                     ;[:a :!Cs] ;;save all files
                      ]} 
             {:des "caps lock layer"
              :rules [:caps_mode
-                     [:##j :left_arrow :!browsers]
-                     [:##k :down_arrow :!browsers]
-                     [:##i :up_arrow :!browsers]
+                     [:##h :left_arrow :!browsers]
+                     [:##j :down_arrow :!browsers]
+                     [:##k :up_arrow :!browsers]
                      [:##l :right_arrow :!browsers]
-                     [:##h :delete_or_backspace :!browsers]
-                     [:##semicolon :return_or_enter :!browsers]
+                     [:##n :delete_or_backspace :!browsers]
+                     [:##semicolon :!Ssemicolon :!browsers]
                      [:##u :!Cleft_arrow :!browsers]
                      [:##o :!Cright_arrow :!browsers]
                      [:##p :!Cp]
                      [:##spacebar :!Cspacebar]
                      [:f :left_shift :!browsers]
-                     [:##c :!Cc]
-                     [:##v :!Cv]]}
+                     ;;[:##c :!Cc]
+                     ;;[:##v :!Cv]
+               					 ]}
       		;; {:des "semicolon layer"
             ;;  :rules [:semicolon_mode
             ;;          [:r [:semicolon :g]]]}
@@ -173,4 +177,22 @@
                      [:v [:km "VSCode: Activate"]]
                      [:w [:km "Chrome: Open Work Profile"]]
                      [:p [:km "VSCode: Open Project"]]
-                     [:n [:km "Notion: Activate"]]]}]}
+                     [:n [:km "Notion: Activate"]]
+                     [:d [:km "Word: Activate"]]
+                     [:z [:km "VSCode: Open Karabiner Goku"]]
+                     [:1 [:km "VSCode: Open Iotah App"]]
+                     [:2 [:km "VSCode: Open Switch App"]]
+                     [:3 [:km "VSCode: Open Iotemeter App"]]
+                     [:4 [:km "VSCode: Open Iotah Web"]]
+                     [:5 [:km "VSCode: Open Switch Web"]]
+                     [:6 [:km "VSCode: Open Iotemeter Web"]]]}
+      		{:des "On hold Enter"
+             :rules [:return_mode
+                     [:##c :!Cc]
+                     [:##v :!Cv]
+                     [:##z :!Cz]
+                     [:##s :!Cs]
+                     [:##d :!Cd]
+                     [:##x :!Cx]
+                     [:##q :!Cq]
+                     [:##f :!Cf]]}]}
