@@ -52,10 +52,11 @@
               :chrome_mode {:key :caps_lock :alone {:key :escape} :condi :Chrome}
               :vscode_mode {:key :caps_lock :alone {:key :escape} :condi :VSCode}
               :github_mode {:key :caps_lock :alone {:key :escape} :condi :Github}
-             }
+              :slash_mode {:key :slash :alone {:key :slash}}
+              ;;:vscode_slash_mode {:key :slash :alone {:key :slash} :condi :VSCode}
+              :vscode_tab_mode {:key :tab :alone {:key :tab} :condi :VSCode}}
 
-     :simlayers {:slash_mode {:key :slash}
-                 :vscode_slash_mode {:key :slash :condi :VSCode}
+     :simlayers {
                  :return_mode {:key :return_or_enter :alone {:key :return_or_enter}}} ;; templates
 
      :templates {:km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
@@ -76,7 +77,7 @@
                      [:##k [:km "Chrome: scroll up"]]
                      [:##l :!COright_arrow] ;;next tab
                      [:##n :!Cw]
-                     [:##semicolon :!Ct]
+                     [:##i :!Ct]
                      [:##y :!C1]
                      [:##u :!C2]
                      [:##o :!C9]
@@ -94,11 +95,12 @@
             {:des "when inside vscode"
              :rules [:vscode_mode
                      ;;[:##v :!Cw]
-                    [:##h :left_arrow :!browsers]
+                     [:##h :left_arrow :!browsers]
                      [:##j :down_arrow :!browsers]
                      [:##k :up_arrow :!browsers]
                      [:##l :right_arrow :!browsers]
                      [:##n :delete_or_backspace :!browsers]
+                     [:##i :!Cd] ;;select word/multiple words
                      [:##semicolon :!Ssemicolon :!browsers]
                      [:##u :!Cleft_arrow :!browsers]
                      [:##o :!Cright_arrow :!browsers]
@@ -116,12 +118,15 @@
                      [:open_bracket :!CTSleft_arrow] ;;increase selection
                      [:close_bracket :!CTSright_arrow];;decrease selection
                      [:quote :!Squote]
-                     [:slash :!Cz]
+                     [:9 :!S9]
+                     [:0 :!S0] 
+                     :vscode_tab_mode 	
+
                      [:9 :!CTOopen_bracket]
-                     [:0 :!CTOclose_bracket]
+                     [:0 :!CTOclose_bracket] ;;decrease split window size
+                     [:backslash :!Cslash] ;;increase split window size	
                      ;:vscode_slash_mode
                      ;[:##f :!Cf] ;;search
-                     ;[:##d :!Cd] ;;select word/multiple words
                      ;[:a :!Cs] ;;save all files
                      ]} 
             {:des "caps lock layer"
@@ -153,7 +158,12 @@
                      [:##quote :!Tright_arrow] ;switch desktop right
                      [:##m :!CTf];full-screen or un-full-screen
                      [:##n :!Cm] ;minimize
-                     ;[:slash :p]
+                     [:##comma :!CTOleft_arrow]
+                     [:##period :!CTOright_arrow]
+                     [:##open_bracket :!TOleft_arrow]
+                     [:##close_bracket :!TOright_arrow]
+									
+               					 ;[:slash :p]
                      [:slash [:km "Window: switch full-screen window"]]]}
             ;; {:des "Open application"
             ;;  :rules [[[:semicolon :c] [:km "Chrome: Open Personal profile"]]
