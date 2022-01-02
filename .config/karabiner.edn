@@ -54,10 +54,11 @@
               :github_mode {:key :caps_lock :alone {:key :escape} :condi :Github}
               :slash_mode {:key :slash :alone {:key :slash}}
               ;;:vscode_slash_mode {:key :slash :alone {:key :slash} :condi :VSCode}
-              :vscode_tab_mode {:key :tab :alone {:key :tab} :condi :VSCode}}
+              :vscode_tab_mode {:key :tab :alone {:key :tab} :condi :VSCode}
+              :return_mode {:key :return_or_enter :alone {:key :return_or_enter}}}
 
      :simlayers {
-                 :return_mode {:key :return_or_enter :alone {:key :return_or_enter}}} ;; templates
+                 } ;; templates
 
      :templates {:km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
                  :open "open \"%s\""
@@ -79,9 +80,10 @@
                      [:##n :!Cw]
                      [:##i :!Ct]
                      [:##y :!C1]
-                     [:##u :!C2]
                      [:##o :!C9]
-                     [:##p :!Cp]]} ;;close tab
+                     [:##p :!Cp]
+                     [:##u :up_arrow]
+                     [:##m :down_arrow]]} ;;close tab
       		{:des "when inside Github"
              :rules [:github_mode
                      ;;[:##v :!Cw]
@@ -111,7 +113,7 @@
                      [:d :left_option]
                      [:##m :!!m]
                      ;[:##n :!Cm]
-                     [:y :!OSgrave_accent_and_tilde] ;;switch from editor<->terminal
+
                      [:comma :!CTcomma] ;;switch editor/terminal panel left
                      [:period :!CTperiod] ;;swith editor/terminal right
                      [:backslash :!Cbackslash]
@@ -119,9 +121,24 @@
                      [:close_bracket :!CTSright_arrow];;decrease selection
                      [:quote :!Squote]
                      [:9 :!S9]
-                     [:0 :!S0] 
-                     :vscode_tab_mode 	
+                     [:0 :!S0]
 
+                     :vscode_tab_mode
+               		;;generic
+                     [:##j :!TO7] ;btt: click left monitor left half
+                     [:##k :!TO6] ;btt: click left monitor right half
+                     [:##l :!TO5] ;btt: click right monitor left half
+                     [:##semicolon :!TO4] ;btt: click right monitor right half
+                     [:##h :!Tleft_arrow] ;switch desktop left
+                     [:##quote :!Tright_arrow] ;switch desktop right
+                     [:##m :!CTf];full-screen or un-full-screen
+                     [:##n :!Cm] ;minimize
+                     [:##comma :!CTOleft_arrow]
+                     [:##period :!CTOright_arrow]
+                     [:##open_bracket :!TOleft_arrow]
+                     [:##close_bracket :!TOright_arrow]
+
+                     [:y :!OSgrave_accent_and_tilde] ;;switch from editor<->terminal
                      [:9 :!CTOopen_bracket]
                      [:0 :!CTOclose_bracket] ;;decrease split window size
                      [:backslash :!Cslash] ;;increase split window size	
@@ -164,7 +181,7 @@
                      [:##close_bracket :!TOright_arrow]
 									
                					 ;[:slash :p]
-                     [:slash [:km "Window: switch full-screen window"]]]}
+                     [:y [:km "Window: switch full-screen window"]]]}
             ;; {:des "Open application"
             ;;  :rules [[[:semicolon :c] [:km "Chrome: Open Personal profile"]]
             ;;          [[:semicolon :e] [:km "Evernote: Activate"]]
