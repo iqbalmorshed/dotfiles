@@ -118,5 +118,15 @@
     {
         "key": "ctrl+alt+cmd+[",
         "command": "workbench.action.decreaseViewWidth"
+    },
+    {
+        "key": "down",
+        "command": "workbench.action.quickOpenNavigateNextInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "key": "cmd+p",
+        "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
     }
 ]
