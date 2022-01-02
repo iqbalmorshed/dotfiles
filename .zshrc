@@ -31,4 +31,5 @@ export PATH="/usr/local/opt/node@12/bin:$PATH"
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
-export PATH="$PATH:/Users/iqbalmorshed/.dotnet/tools"
+#export PATH="$PATH:/Users/iqbalmorshed/.dotnet/tools"test -e /Users/iqbalmorshed/.iterm2_shell_integration.zsh && source /Users/iqbalmorshed/.iterm2_shell_integration.zsh || true
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
