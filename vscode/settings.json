@@ -30,7 +30,6 @@
 	"editor.minimap.maxColumn": 85,
 	"security.workspace.trust.untrustedFiles": "open",
 	"editor.formatOnSave": true,
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.parameterHints.enabled": false,
 	"editor.suggest.showTypeParameters": false,
 	"editor.formatOnSaveMode": "modifications",
@@ -69,8 +68,6 @@
       // Paste
       "<C-v>": false,
     },
-	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
+	"tabnine.experimentalAutoImports": false,
     //"editor.quickSuggestions": null
 }
