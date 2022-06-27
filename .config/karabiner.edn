@@ -179,13 +179,14 @@
                      [:##semicolon :!TO4] ;btt: click right monitor right half
                      [:##h :!Tleft_arrow] ;switch desktop left
                      [:##quote :!Tright_arrow] ;switch desktop right
-                     [:##m :!CTf];full-screen or un-full-screen
+                     [:##m :!TOreturn_or_enter] ;zoom
+               		;[:##m :!CTf];full-screen or un-full-screen
                      [:##n :!Cm] ;minimize
                      [:##comma :!CTOleft_arrow]
                      [:##period :!CTOright_arrow]
                      [:##open_bracket :!TOleft_arrow]
                      [:##close_bracket :!TOright_arrow]
-									
+
                					 ;[:slash :p]
                      [:y [:km "Window: switch full-screen window"]]]}
             ;; {:des "Open application"
