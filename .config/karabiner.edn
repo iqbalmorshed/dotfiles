@@ -90,11 +90,12 @@
                      ;;[:##v :!Cw]
                      [:##h :!C1] ;;changes 
                      [:##j :!CSp] ;;pull
-[:##k :!Cp] ;;push
+                     [:##k :!Cp] ;;push  
 [:##l :!C2] ;;history
-[:##i :!Ct] ;;repository
+                     [:##i :!Cg] ;;go to commit summary box
 [:##u :!Cb] ;;branch
 [:##l :!Cg] ;;next tab 
+                     [:##o :!Ct] ;;repository
                      ;;[:##h :!Cw]
                      [:##semicolon :!Creturn_or_enter]
                      [:##p :!Ct]]} ;;close tab
