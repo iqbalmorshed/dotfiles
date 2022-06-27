@@ -87,10 +87,13 @@
       		{:des "when inside Github"
              :rules [:github_mode
                      ;;[:##v :!Cw]
-                     [:##j :!C1] ;;changes
-                     [:##k :!C2] ;;history
-                     [:##i :!Cp] ;;push
-                     [:##l :!Cg] ;;next tab
+                     [:##h :!C1] ;;changes 
+[:##j :!CSp] ;;pull
+[:##k :!Cp] ;;push
+[:##l :!C2] ;;history
+[:##i :!Ct] ;;repository
+[:##u :!Cb] ;;branch
+[:##l :!Cg] ;;next tab 
                      ;;[:##h :!Cw]
                      [:##semicolon :!Creturn_or_enter]
                      [:##p :!Ct]]} ;;close tab
