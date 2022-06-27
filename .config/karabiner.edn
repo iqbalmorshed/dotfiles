@@ -55,6 +55,7 @@
               :slash_mode {:key :slash :alone {:key :slash}}
               ;;:vscode_slash_mode {:key :slash :alone {:key :slash} :condi :VSCode}
               :vscode_tab_mode {:key :tab :alone {:key :tab} :condi :VSCode}
+              :vscode_return_mode {:key :return_or_enter :alone {:key :return_or_enter} :condi :VSCode}
               :return_mode {:key :return_or_enter :alone {:key :return_or_enter}}}
 
      :simlayers {
@@ -88,7 +89,7 @@
              :rules [:github_mode
                      ;;[:##v :!Cw]
                      [:##h :!C1] ;;changes 
-[:##j :!CSp] ;;pull
+                     [:##j :!CSp] ;;pull
 [:##k :!Cp] ;;push
 [:##l :!C2] ;;history
 [:##i :!Ct] ;;repository
@@ -145,7 +146,9 @@
                      [:9 :!CTOopen_bracket]
                      [:0 :!CTOclose_bracket] ;;decrease split window size
                      [:backslash :!Cslash] ;;increase split window size	
-                     ;:vscode_slash_mode
+                     :vscode_return_mode
+[:t :!CSf]
+               					;:vscode_slash_mode
                      ;[:##f :!Cf] ;;search
                      ;[:a :!Cs] ;;save all files
                      ]} 
