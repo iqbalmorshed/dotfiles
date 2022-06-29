@@ -85,20 +85,22 @@
                      [:##p :!Cp]
                      [:##u :up_arrow]
                      [:##m :down_arrow]]} ;;close tab
-      		{:des "when inside Github"
+            {:des "when inside Github"
              :rules [:github_mode
                      ;;[:##v :!Cw]
                      [:##h :!C1] ;;changes 
                      [:##j :!CSp] ;;pull
                      [:##k :!Cp] ;;push  
-[:##l :!C2] ;;history
+                     [:##l :!C2] ;;history
                      [:##i :!Cg] ;;go to commit summary box
-[:##u :!Cb] ;;branch
+                     [:##u :!Cb] ;;branch
 [:##l :!Cg] ;;next tab 
                      [:##o :!Ct] ;;repository
                      ;;[:##h :!Cw]
                      [:##semicolon :!Creturn_or_enter]
+                     [:##m [:km "Github Desktop: Go to Changed Files"]]
                      [:##p :!Ct]]} ;;close tab
+      					
             {:des "when inside vscode"
              :rules [:vscode_mode
                      ;;[:##v :!Cw]
@@ -114,6 +116,7 @@
                      [:##p :!Cp]
                      [:##spacebar :!Cspacebar]
                      [:f :left_shift :!browsers]
+                     [:y :!OSgrave_accent_and_tilde] ;;switch from editor<->terminal
 
                      [:d :left_option]
                      [:##m :!!m]
@@ -142,17 +145,27 @@
                      [:##period :!CTOright_arrow]
                      [:##open_bracket :!TOleft_arrow]
                      [:##close_bracket :!TOright_arrow]
-
-                     [:y :!OSgrave_accent_and_tilde] ;;switch from editor<->terminal
+                     [:y :!Tgrave_accent_and_tilde]
+                     
                      [:9 :!CTOopen_bracket]
                      [:0 :!CTOclose_bracket] ;;decrease split window size
                      [:backslash :!Cslash] ;;increase split window size	
                      :vscode_return_mode
-[:t :!CSf]
+                     [:t :!CSf] ;; search
+[:r :!Ff4] ;; rotate through search
+[:##c :!Cc]
+[:##v :!Cv]
+[:##z :!Cz]
+[:##s :!Cs] ;;save
+[:##d :!Cd]
+[:##x :!Cx]
+[:##q :!Cq]
+[:##f :!Cf]
+[:##b :!Cb] ;; show hide search bar
                					;:vscode_slash_mode
-                     ;[:##f :!Cf] ;;search
+                     ;[:f :!Cf] ;;search
                      ;[:a :!Cs] ;;save all files
-                     ]} 
+                     ]}
             {:des "caps lock layer"
              :rules [:caps_mode
                      [:##h :left_arrow :!browsers]
@@ -168,7 +181,7 @@
                      [:f :left_shift :!browsers]
                      ;;[:##c :!Cc]
                      ;;[:##v :!Cv]
-               					 ]}
+                     ]}
       		;; {:des "semicolon layer"
             ;;  :rules [:semicolon_mode
             ;;          [:r [:semicolon :g]]]}
@@ -223,7 +236,7 @@
                      [:4 [:km "VSCode: Open Iotah Web"]]
                      [:5 [:km "VSCode: Open Switch Web"]]
                      [:6 [:km "VSCode: Open Iotemeter Web"]]]}
-      		{:des "On hold Enter"
+            {:des "On hold Enter"
              :rules [:return_mode
                      [:##c :!Cc]
                      [:##v :!Cv]
