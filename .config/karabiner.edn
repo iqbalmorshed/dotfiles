@@ -94,8 +94,8 @@
                      [:##h [:km "Github Desktop: Go to Changed Files"]]
 [:##j :down_arrow] ;;move change file down
 [:##k :up_arrow] ;;move change file up
-[:##u :!CSp] ;;push
-[:##m :!Cp] ;;pull  
+[:##u :!Cp] ;;push
+[:##m :!CSp] ;;pull  
                      [:##l :!C2] ;;history
                      [:##i :!Cg] ;;go to commit summary box
                      [:##o :!Cb] ;;branch
