@@ -43,15 +43,17 @@
                           :delay 500
                           :alone 1000
                           :held 100}}
-     :applications {:Chrome ["^com\\.google\\.Chrome$"] 
+     :applications {:Chrome ["^com\\.google\\.Chrome$"]
                     :browsers ["^com\\.google\\.Chrome$" "^com\\.apple\\.Safari$"]
                     :VSCode ["^com\\.microsoft\\.VSCode?$"]
-               		:Github ["^com\\.github\\.GitHubClient$"]			}
+                    :Github ["^com\\.github\\.GitHubClient$"]
+                    :Zoom ["^us\\.zoom\\.xos$"]} 
      :layers {:caps_mode {:key :caps_lock :alone {:key :escape}}
               :tab_mode {:key :tab}
               :chrome_mode {:key :caps_lock :alone {:key :escape} :condi :Chrome}
               :vscode_mode {:key :caps_lock :alone {:key :escape} :condi :VSCode}
               :github_mode {:key :caps_lock :alone {:key :escape} :condi :Github}
+              :zoom_mode {:key :caps_lock :alone {:key :escape} :condi :Zoom}
               :slash_mode {:key :slash :alone {:key :slash}}
               ;;:vscode_slash_mode {:key :slash :alone {:key :slash} :condi :VSCode}
               :vscode_tab_mode {:key :tab :alone {:key :tab} :condi :VSCode}
@@ -88,19 +90,30 @@
             {:des "when inside Github"
              :rules [:github_mode
                      ;;[:##v :!Cw]
-                     [:##h :!C1] ;;changes 
-                     [:##j :!CSp] ;;pull
-                     [:##k :!Cp] ;;push  
+                     ;[:##h :!C1] ;;changes  
+                     [:##h [:km "Github Desktop: Go to Changed Files"]]
+[:##j :down_arrow] ;;move change file down
+[:##k :up_arrow] ;;move change file up
+[:##u :!CSp] ;;push
+[:##m :!Cp] ;;pull  
                      [:##l :!C2] ;;history
                      [:##i :!Cg] ;;go to commit summary box
-                     [:##u :!Cb] ;;branch
-[:##l :!Cg] ;;next tab 
-                     [:##o :!Ct] ;;repository
+                     [:##o :!Cb] ;;branch
+                     ;[:##l :!Cg] ;;next tab 
+[:##p :!Ct] ;;repository
                      ;;[:##h :!Cw]
                      [:##semicolon :!Creturn_or_enter]
-                     [:##m [:km "Github Desktop: Go to Changed Files"]]
-                     [:##p :!Ct]]} ;;close tab
-      					
+
+                     ;[:##p :!Ct]]
+                     ]} ;;close tab
+
+            {:des "when inside Zoom"
+             :rules [:zoom_mode
+                     ;;[:##v :!Cw]
+                     [:##m :!CSa] ;;mute / unmute
+                     [:##s :!CSs] ;;screen share
+                     [:##n :!CSv] ;video
+                     [:##u :!Cu]]}
             {:des "when inside vscode"
              :rules [:vscode_mode
                      ;;[:##v :!Cw]
@@ -139,7 +152,8 @@
                      [:##semicolon :!TO4] ;btt: click right monitor right half
                      [:##h :!Tleft_arrow] ;switch desktop left
                      [:##quote :!Tright_arrow] ;switch desktop right
-                     [:##m :!CTf];full-screen or un-full-screen
+                     ;[:##m :!CTf];full-screen or un-full-screen
+                     [:##m :!TOreturn_or_enter] ;zoom
                      [:##n :!Cm] ;minimize
                      [:##comma :!CTOleft_arrow]
                      [:##period :!CTOright_arrow]
@@ -229,7 +243,8 @@
                      [:t [:km "Terminal: activate"]]
                      [:v [:km "VSCode: Activate"]]
                      [:w [:km "Chrome: Open Work Profile"]]
-                     [:z [:km "VSCode: Open Karabiner Goku"]]
+                     [:z [:km "Zoom: Activate"]]
+[:grave_accent_and_tilde [:km "VSCode: Open Karabiner Goku"]]
                      [:1 [:km "VSCode: Open Iotah App"]]
                      [:2 [:km "VSCode: Open Switch App"]]
                      [:3 [:km "VSCode: Open Iotemeter App"]]
