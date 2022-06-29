@@ -110,10 +110,11 @@
             {:des "when inside Zoom"
              :rules [:zoom_mode
                      ;;[:##v :!Cw]
-                     [:##m :!CSa] ;;mute / unmute
-                     [:##s :!CSs] ;;screen share
-                     [:##n :!CSv] ;video
-                     [:##u :!Cu]]}
+                     [:h :!CSv] ;video
+                     [:j :!CSa] ;;mute / unmute
+[:k :!CSs] ;;screen share
+                     [:p :!Cu]
+                     [:n :!Cw]]}
             {:des "when inside vscode"
              :rules [:vscode_mode
                      ;;[:##v :!Cw]
