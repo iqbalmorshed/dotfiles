@@ -85,5 +85,7 @@
       "<C-v>": false,
     },
 	"tabnine.experimentalAutoImports": false,
+	"vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+	"vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.vim",
     //"editor.quickSuggestions": null
 }
