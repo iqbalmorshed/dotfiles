@@ -47,25 +47,26 @@
                     :browsers ["^com\\.google\\.Chrome$" "^com\\.apple\\.Safari$"]
                     :VSCode ["^com\\.microsoft\\.VSCode?$"]
                     :Github ["^com\\.github\\.GitHubClient$"]
-                    :Zoom ["^us\\.zoom\\.xos$"]} 
+                    :Zoom ["^us\\.zoom\\.xos$"]
+                    :Evernote ["^com\\.evernote\\.Evernote$"]}
      :layers {:caps_mode {:key :caps_lock :alone {:key :escape}}
               :tab_mode {:key :tab}
               :chrome_mode {:key :caps_lock :alone {:key :escape} :condi :Chrome}
               :vscode_mode {:key :caps_lock :alone {:key :escape} :condi :VSCode}
               :github_mode {:key :caps_lock :alone {:key :escape} :condi :Github}
               :zoom_mode {:key :caps_lock :alone {:key :escape} :condi :Zoom}
+              :evernote_mode {:key :caps_lock :alone {:key :escape} :condi :Evernote}
               :slash_mode {:key :slash :alone {:key :slash}}
               ;;:vscode_slash_mode {:key :slash :alone {:key :slash} :condi :VSCode}
               :vscode_tab_mode {:key :tab :alone {:key :tab} :condi :VSCode}
               :vscode_return_mode {:key :return_or_enter :alone {:key :return_or_enter} :condi :VSCode}
               :return_mode {:key :return_or_enter :alone {:key :return_or_enter}}}
 
-     :simlayers {
-                 } ;; templates
+     :simlayers {} ;; templates
 
      :templates {:km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
                  :open "open \"%s\""
-            	 :code "/usr/local/bin/code \"%s\"" ;;full path of the app is needed if installed using brew
+                 :code "/usr/local/bin/code \"%s\"" ;;full path of the app is needed if installed using brew
                  :hsl        "/usr/local/bin/hs -A -n -q -t 0.1 -c 'hs.application.launchOrFocus(\"%s\")'"}
 
      :main [;; 	 {:des "a to 1, b to 2, c to insert 1 2 3"
@@ -85,6 +86,8 @@
                      [:##y :!C1]
                      [:##o :!C9]
                      [:##p :!Cp]
+                     [:comma :!Copen_bracket] ;go back history
+[:period :!Cclose_bracket] ;go forward history
                      [:##u :up_arrow]
                      [:##m :down_arrow]]} ;;close tab
             {:des "when inside Github"
@@ -92,7 +95,7 @@
                      ;;[:##v :!Cw]
                      ;[:##h :!C1] ;;changes  
                      [:##h [:km "Github Desktop: Go to Changed Files"]]
-[:##j :down_arrow] ;;move change file down
+                     [:##j :down_arrow] ;;move change file down
 [:##k :up_arrow] ;;move change file up
 [:##u :!Cp] ;;push
 [:##m :!CSp] ;;pull  
@@ -100,21 +103,39 @@
                      [:##i :!Cg] ;;go to commit summary box
                      [:##o :!Cb] ;;branch
                      ;[:##l :!Cg] ;;next tab 
-[:##p :!Ct] ;;repository
+                     [:##p :!Ct] ;;repository
                      ;;[:##h :!Cw]
                      [:##semicolon :!Creturn_or_enter]
 
                      ;[:##p :!Ct]]
-                     ]} ;;close tab
+]} ;;close tab
 
             {:des "when inside Zoom"
              :rules [:zoom_mode
                      ;;[:##v :!Cw]
                      [:h :!CSv] ;video
                      [:j :!CSa] ;;mute / unmute
-[:k :!CSs] ;;screen share
+                     [:k :!CSs] ;;screen share
                      [:p :!Cu]
                      [:n :!Cw]]}
+            {:des "when inside Evernote"
+             :rules [:evernote_mode
+                     ;;[:##v :!Cw]
+                     [:##h :left_arrow :!browsers]
+                     [:##j :down_arrow :!browsers]
+                     [:##k :up_arrow :!browsers]
+                     [:##l :right_arrow :!browsers]
+                     [:##n :delete_or_backspace :!browsers]
+                     [:##semicolon :!Ssemicolon :!browsers]
+                     [:##u :!Cleft_arrow :!browsers]
+                     [:##o :!Cright_arrow :!browsers]
+                     [:p :!Cj] ;switch to
+                     [:i :!Cn] ;new note
+                     [:f :!OCf]
+                     [:comma :!Copen_bracket] ;go previous
+                     [:period :!Cclose_bracket] ;go next
+                     ]}
+
             {:des "when inside vscode"
              :rules [:vscode_mode
                      ;;[:##v :!Cw]
@@ -161,13 +182,13 @@
                      [:##open_bracket :!TOleft_arrow]
                      [:##close_bracket :!TOright_arrow]
                      [:y :!Tgrave_accent_and_tilde]
-                     
+
                      [:9 :!CTOopen_bracket]
                      [:0 :!CTOclose_bracket] ;;decrease split window size
                      [:backslash :!Cslash] ;;increase split window size	
                      :vscode_return_mode
                      [:t :!CSf] ;; search
-[:r :!Ff4] ;; rotate through search
+                     [:r :!Ff4] ;; rotate through search
 [:##c :!Cc]
 [:##v :!Cv]
 [:##z :!Cz]
@@ -236,6 +257,7 @@
                      [:e [:km "Evernote: Activate"]]
                      [:f [:km "Foxit Reader: Activate"]]
                      [:g [:km "Github Desktop: Activate"]]
+                     [:k [:km "KM: Activate"]]
                      [:r [:km "Postman: Activate"]]
                      [:n [:km "Notion: Activate"]]
                      [:o [:km "VSCode: Open Project"]]
@@ -245,7 +267,7 @@
                      [:v [:km "VSCode: Activate"]]
                      [:w [:km "Chrome: Open Work Profile"]]
                      [:z [:km "Zoom: Activate"]]
-[:grave_accent_and_tilde [:km "VSCode: Open Karabiner Goku"]]
+                     [:grave_accent_and_tilde [:km "VSCode: Open Karabiner Goku"]]
                      [:1 [:km "VSCode: Open Iotah App"]]
                      [:2 [:km "VSCode: Open Switch App"]]
                      [:3 [:km "VSCode: Open Iotemeter App"]]
