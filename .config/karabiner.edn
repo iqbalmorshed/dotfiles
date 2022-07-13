@@ -48,6 +48,7 @@
                     :VSCode ["^com\\.microsoft\\.VSCode?$"]
                     :Github ["^com\\.github\\.GitHubClient$"]
                     :Zoom ["^us\\.zoom\\.xos$"]
+                    :Postman ["^com\\.postmanlabs\\.mac$"]
                     :Evernote ["^com\\.evernote\\.Evernote$"]}
      :layers {:caps_mode {:key :caps_lock :alone {:key :escape}}
               :tab_mode {:key :tab}
@@ -55,6 +56,7 @@
               :vscode_mode {:key :caps_lock :alone {:key :escape} :condi :VSCode}
               :github_mode {:key :caps_lock :alone {:key :escape} :condi :Github}
               :zoom_mode {:key :caps_lock :alone {:key :escape} :condi :Zoom}
+              :postman_mode {:key :caps_lock :alone {:key :escape} :condi :Postman}
               :evernote_mode {:key :caps_lock :alone {:key :escape} :condi :Evernote}
               :slash_mode {:key :slash :alone {:key :slash}}
               ;;:vscode_slash_mode {:key :slash :alone {:key :slash} :condi :VSCode}
@@ -87,7 +89,7 @@
                      [:##o :!C9]
                      [:##p :!Cp]
                      [:comma :!Copen_bracket] ;go back history
-[:period :!Cclose_bracket] ;go forward history
+                     [:period :!Cclose_bracket] ;go forward history
                      [:##u :up_arrow]
                      [:##m :down_arrow]]} ;;close tab
             {:des "when inside Github"
@@ -96,7 +98,7 @@
                      ;[:##h :!C1] ;;changes  
                      [:##h [:km "Github Desktop: Go to Changed Files"]]
                      [:##j :down_arrow] ;;move change file down
-[:##k :up_arrow] ;;move change file up
+                     [:##k :up_arrow] ;;move change file up
 [:##u :!Cp] ;;push
 [:##m :!CSp] ;;pull  
                      [:##l :!C2] ;;history
@@ -118,6 +120,13 @@
                      [:k :!CSs] ;;screen share
                      [:p :!Cu]
                      [:n :!Cw]]}
+            {:des "when inside Postman"
+             :rules [:postman_mode
+                     ;;[:##v :!Cw]
+                     [:h :!CSopen_bracket] ;previous tab
+                     [:l :!CSclose_bracket] ;next tab
+                     [:semicolon :!Creturn_or_enter] ;send request
+                     ]}
             {:des "when inside Evernote"
              :rules [:evernote_mode
                      ;;[:##v :!Cw]
@@ -189,7 +198,7 @@
                      :vscode_return_mode
                      [:t :!CSf] ;; search
                      [:r :!Ff4] ;; rotate through search
-[:##c :!Cc]
+                     [:##c :!Cc]
 [:##v :!Cv]
 [:##z :!Cz]
 [:##s :!Cs] ;;save
@@ -258,10 +267,10 @@
                      [:f [:km "Foxit Reader: Activate"]]
                      [:g [:km "Github Desktop: Activate"]]
                      [:k [:km "KM: Activate"]]
-                     [:r [:km "Postman: Activate"]]
                      [:n [:km "Notion: Activate"]]
-                     [:o [:km "VSCode: Open Project"]]
                      [:p [:km "PGAdmin: Activate"]]
+                     [:o [:km "VSCode: Open Project"]]
+                     [:r [:km "Postman: Activate"]]
                      [:s [:km "Slack: Activate"]]
                      [:t [:km "Terminal: activate"]]
                      [:v [:km "VSCode: Activate"]]
