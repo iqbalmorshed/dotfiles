@@ -266,6 +266,7 @@
                      [:e [:km "Evernote: Activate"]]
                      [:f [:km "Foxit Reader: Activate"]]
                      [:g [:km "Github Desktop: Activate"]]
+                     [:j [:km "Jira: Activate"]]
                      [:k [:km "KM: Activate"]]
                      [:m [:km "MySocials: Activate"]]
                      [:n [:km "Notion: Activate"]]
