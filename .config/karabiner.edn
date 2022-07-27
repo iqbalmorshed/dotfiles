@@ -88,6 +88,7 @@
                      [:##y :!C1]
                      [:##o :!C9]
                      [:##p :!Cp]
+                     [:semicolon [:km "Chrome: Close all tab except 1st"]]
                      [:comma :!Copen_bracket] ;go back history
                      [:period :!Cclose_bracket] ;go forward history
                      [:##u :up_arrow]
