@@ -1,3 +1,7 @@
 .cache
 **/karabiner.json
 configstore/*
+.config/raycast/extensions/*
+.config/raycast/config.json
+.config/com.add0n.node/*
+.config/configstore/update-notifier-npm.json
