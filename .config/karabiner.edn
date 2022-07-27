@@ -261,6 +261,7 @@
             ;;          [[:a :n] [:km "Notion: Activate"]]]}
             {:des "Open application"
              :rules [:slash_mode
+                     [:b [:km "Obsidian: Activate"]]
                      [:c [:km "Chrome: Open Personal profile"]]
                      [:d [:km "Word: Activate"]]
                      [:e [:km "Evernote: Activate"]]
