@@ -91,7 +91,7 @@
                      [:##p :!Cp]
                      [:semicolon [:km "Chrome: Close all tab except 1st"]]
                      [:##open_bracket :!C1] ;same as Cy
-[:##close_bracket [:!C9]]
+                     [:##close_bracket [:!C9]]
                      [:comma :!Copen_bracket] ;go back history
                      [:period :!Cclose_bracket] ;go forward history
                      [:##u :up_arrow]
@@ -103,7 +103,7 @@
                      [:##h [:km "Github Desktop: Go to Changed Files"]]
                      [:##j :down_arrow] ;;move change file down
                      [:##k :up_arrow] ;;move change file up
-[:##u :!Cp] ;;push
+                     [:##u :!Cp] ;;push
 [:##m :!CSp] ;;pull  
                      [:##l :!C2] ;;history
                      [:##i :!Cg] ;;go to commit summary box
@@ -298,6 +298,12 @@
                      [:e [:km "Gmail-MySocials: Activate"]]
                      [:t [:km "Telegram-MySocials: Activate"]]
                      [:r [:km "Messenger-MySocials: Activate"]]]}
+
+            {:des "Some Misc. Tasks"
+             :rules [:quote_mode
+                     [:x :!TCS4]] ;;take screenshot
+             }
+
             {:des "On hold Enter"
              :rules [:return_mode
                      [:##c :!Cc]
