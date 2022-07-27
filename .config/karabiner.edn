@@ -85,11 +85,13 @@
                      [:##k [:km "Chrome: scroll up"]]
                      [:##l :!COright_arrow] ;;next tab
                      [:##n :!Cw]
-                     [:##i :!Ct]
+                     [:##i :!Cl]
                      [:##y :!C1]
-                     [:##o :!C9]
+                     [:##o :!Ct]
                      [:##p :!Cp]
                      [:semicolon [:km "Chrome: Close all tab except 1st"]]
+                     [:##open_bracket :!C1] ;same as Cy
+[:##close_bracket [:!C9]]
                      [:comma :!Copen_bracket] ;go back history
                      [:period :!Cclose_bracket] ;go forward history
                      [:##u :up_arrow]
