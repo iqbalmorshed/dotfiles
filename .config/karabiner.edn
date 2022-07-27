@@ -59,6 +59,7 @@
               :postman_mode {:key :caps_lock :alone {:key :escape} :condi :Postman}
               :evernote_mode {:key :caps_lock :alone {:key :escape} :condi :Evernote}
               :slash_mode {:key :slash :alone {:key :slash}}
+              :quote_mode {:key :quote :alone {:key :quote}}
               ;;:vscode_slash_mode {:key :slash :alone {:key :slash} :condi :VSCode}
               :vscode_tab_mode {:key :tab :alone {:key :tab} :condi :VSCode}
               :vscode_return_mode {:key :return_or_enter :alone {:key :return_or_enter} :condi :VSCode}
@@ -287,7 +288,14 @@
                      [:3 [:km "VSCode: Open Iotemeter App"]]
                      [:4 [:km "VSCode: Open Iotah Web"]]
                      [:5 [:km "VSCode: Open Switch Web"]]
-                     [:6 [:km "VSCode: Open Iotemeter Web"]]]}
+                     [:6 [:km "VSCode: Open Iotemeter Web"]]
+                     :quote_mode
+                     [:g [:km "Gmail-WorkColab: Activate"]]
+                     [:s [:km "Slack-WorkColab: Activate"]]
+                     [:w [:km "WhatsApp-MySocials: Activate"]]
+                     [:e [:km "Gmail-MySocials: Activate"]]
+                     [:t [:km "Telegram-MySocials: Activate"]]
+                     [:r [:km "Messenger-MySocials: Activate"]]]}
             {:des "On hold Enter"
              :rules [:return_mode
                      [:##c :!Cc]
