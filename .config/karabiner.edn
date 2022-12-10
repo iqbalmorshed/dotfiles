@@ -59,7 +59,8 @@
               :postman_mode {:key :caps_lock :alone {:key :escape} :condi :Postman}
               :evernote_mode {:key :caps_lock :alone {:key :escape} :condi :Evernote}
               :slash_mode {:key :slash :alone {:key :slash}}
-              :quote_mode {:key :quote :alone {:key :quote}}
+              :open_bracket_mode {:key :open_bracket :alone {:key :open_bracket}}
+:close_bracket_mode {:key :close_bracket :alone {:key :close_bracket}}
               ;;:vscode_slash_mode {:key :slash :alone {:key :slash} :condi :VSCode}
               :vscode_tab_mode {:key :tab :alone {:key :tab} :condi :VSCode}
               :vscode_return_mode {:key :return_or_enter :alone {:key :return_or_enter} :condi :VSCode}
@@ -158,7 +159,7 @@
                      [:##l :right_arrow :!browsers]
                      [:##n :delete_or_backspace :!browsers]
                      [:##i :!Cd] ;;select word/multiple words
-                     [:##semicolon :!Ssemicolon :!browsers]
+                     ;;[:##semicolon :!Ssemicolon :!browsers]
                      [:##u :!Cleft_arrow :!browsers]
                      [:##o :!Cright_arrow :!browsers]
                      [:##p :!Cp]
@@ -173,6 +174,8 @@
                      [:comma :!CTcomma] ;;switch editor/terminal panel left
                      [:period :!CTperiod] ;;swith editor/terminal right
                      [:backslash :!Cbackslash]
+                     [:semicolon :!TOsemicolon]
+[:quote :!Thyphen]
                      [:open_bracket :!CTSleft_arrow] ;;increase selection
                      [:close_bracket :!CTSright_arrow];;decrease selection
                      [:quote :!Squote]
@@ -203,7 +206,7 @@
                      [:t :!CSf] ;; search
                      [:r :!Ff4] ;; rotate through search
                      [:##c :!Cc]
-[:##v :!Cv]
+                     [:##v :!Cv]
 [:##z :!Cz]
 [:##s :!Cs] ;;save
 [:##d :!Cd]
@@ -278,7 +281,7 @@
                      [:o [:km "VSCode: Open Project"]]
                      [:p [:km "PGAdmin: Activate"]]
                      [:r [:km "Postman: Activate"]]
-                     [:s [:km "WorkColab: Activate"]]
+                     [:s [:km "Slack: Activate"]]
                					 ;[:s [:km "Slack: Activate"]]
                      [:t [:km "Terminal: activate"]]
                      [:v [:km "VSCode: Activate"]]
@@ -291,17 +294,18 @@
                      [:4 [:km "VSCode: Open Iotah Web"]]
                      [:5 [:km "VSCode: Open Switch Web"]]
                      [:6 [:km "VSCode: Open Iotemeter Web"]]
-                     :quote_mode
+                     :open_bracket_mode
                      [:g [:km "Gmail-WorkColab: Activate"]]
-                     [:c [:km "Slack-WorkColab: Activate"]]
+                     [:s [:km "Slack-WorkColab: Activate"]]
                      [:w [:km "WhatsApp-MySocials: Activate"]]
                      [:e [:km "Gmail-MySocials: Activate"]]
                      [:t [:km "Telegram-MySocials: Activate"]]
                      [:r [:km "Messenger-MySocials: Activate"]]]}
 
             {:des "Some Misc. Tasks"
-             :rules [:quote_mode
-                     [:x :!TCS4]] ;;take screenshot
+             :rules [:close_bracket_mode
+                     [:c :!COc]
+                     [:x :!TCS4]] ;;take screenshot clip
              }
 
             {:des "On hold Enter"
