@@ -59,7 +59,7 @@
               :postman_mode {:key :caps_lock :alone {:key :escape} :condi :Postman}
               :evernote_mode {:key :caps_lock :alone {:key :escape} :condi :Evernote}
               :slash_mode {:key :slash :alone {:key :slash}}
-              :open_bracket_mode {:key :open_bracket :alone {:key :open_bracket}}
+              ;;:open_bracket_mode {:key :open_bracket :alone {:key :open_bracket}}
 :close_bracket_mode {:key :close_bracket :alone {:key :close_bracket}}
               ;;:vscode_slash_mode {:key :slash :alone {:key :slash} :condi :VSCode}
               :vscode_tab_mode {:key :tab :alone {:key :tab} :condi :VSCode}
@@ -175,7 +175,7 @@
                      [:period :!CTperiod] ;;swith editor/terminal right
                      [:backslash :!Cbackslash]
                      [:semicolon :!TOsemicolon]
-[:quote :!Thyphen]
+                     [:quote :!Thyphen]
                      [:open_bracket :!CTSleft_arrow] ;;increase selection
                      [:close_bracket :!CTSright_arrow];;decrease selection
                      [:quote :!Squote]
@@ -294,7 +294,7 @@
                      [:4 [:km "VSCode: Open Iotah Web"]]
                      [:5 [:km "VSCode: Open Switch Web"]]
                      [:6 [:km "VSCode: Open Iotemeter Web"]]
-                     :open_bracket_mode
+                     :close_bracket_mode
                      [:g [:km "Gmail-WorkColab: Activate"]]
                      [:s [:km "Slack-WorkColab: Activate"]]
                      [:w [:km "WhatsApp-MySocials: Activate"]]
