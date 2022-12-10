@@ -10,32 +10,36 @@
     "editor.fontSize": 13,
     "explorer.confirmDelete": false,
     "gitlens.views.compare.files.layout": "list",
-	"editor.renderWhitespace": "none",
-    "terminal.integrated.shell.osx": "/bin/zsh",
+    "editor.renderWhitespace": "none",
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "/bin/zsh"
+        }
+    },
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-	"prettier.arrowParens": "avoid",
-	"javascript.updateImportsOnFileMove.enabled": "always",
+    "prettier.arrowParens": "avoid",
+    "javascript.updateImportsOnFileMove.enabled": "always",
     "editor.accessibilitySupport": "off",
     "files.exclude": {
         "**/.classpath": true,
         "**/.project": true,
         "**/.settings": true,
         "**/.factorypath": true
-	},
+    },
     "javascript.format.semicolons": "insert",
-	"prettier.singleQuote": true,
+    "prettier.singleQuote": true,
     "editor.insertSpaces": false,
-	"editor.detectIndentation": false,
-	"editor.minimap.maxColumn": 85,
-	"security.workspace.trust.untrustedFiles": "open",
-	"editor.formatOnSave": true,
-	"editor.parameterHints.enabled": false,
-	"editor.suggest.showTypeParameters": false,
-	"editor.formatOnSaveMode": "modifications",
-	"bracketPairColorizer.depreciation-notice": false,
-	"vim.easymotion": true,
-	"vim.useCtrlKeys": true,
+    "editor.detectIndentation": false,
+    "editor.minimap.maxColumn": 85,
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.formatOnSave": true,
+    "editor.parameterHints.enabled": false,
+    "editor.suggest.showTypeParameters": false,
+    "editor.formatOnSaveMode": "modifications",
+    "bracketPairColorizer.depreciation-notice": false,
+    "vim.easymotion": true,
+    "vim.useCtrlKeys": true,
     "vim.useSystemClipboard": true,
     // Insert mode
     // "vim.insertModeKeyBindings": [
@@ -47,45 +51,53 @@
     // ],
     // Visual mode
     "vim.visualModeKeyBindings": [
-      // In visual mode i goes to insert mode
-      {
-        "before": ["i"],
-        "after": ["<Esc>", "i"]
-      }
+        // In visual mode i goes to insert mode
+        {
+            "before": ["i"],
+            "after": ["<Esc>", "i"]
+        }
     ],
     // Escaping from vim for below commands
-	"vim.normalModeKeyBindingsNonRecursive": [
-		{
-		  "before": ["<leader>", "d"],
-		  "after": ["d", "d"]
-		},
-		{
-		  "before": ["<C-n>"],
-		  "commands": [":nohl"]
-		},
-		{
-		  "before": ["K"],
-		  "commands": ["lineBreakInsert"],
-		  "silent": true
-		}
-	],
-	//"vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "d"],
+            "after": ["d", "d"]
+        },
+        {
+            "before": ["<C-n>"],
+            "commands": [":nohl"]
+        },
+        {
+            "before": ["K"],
+            "commands": ["lineBreakInsert"],
+            "silent": true
+        }
+    ],
+    //"vim.leader": "<space>",
     "vim.handleKeys": {
-      // Select all
-      "<C-a>": false,
-      // VS Code search in file
-      "<C-f>": false,
-      // VS Code new marker @ next occurence
-      "<C-d>": false,
-      // Copy
-      "<C-c>": false,
-      // Cut
-      "<C-x>": false,
-      // Paste
-      "<C-v>": false,
+        // Select all
+        "<C-a>": false,
+        // VS Code search in file
+        "<C-f>": false,
+        // VS Code new marker @ next occurence
+        "<C-d>": false,
+        // Copy
+        "<C-c>": false,
+        // Cut
+        "<C-x>": false,
+        // Paste
+        "<C-v>": false
     },
-	"tabnine.experimentalAutoImports": false,
-	"vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-	"vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.vim",
+    "tabnine.experimentalAutoImports": false,
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.vim",
+    "diffEditor.codeLens": true,
+    "git.mergeEditor": false,
+    "git.path": "",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.automationProfile.osx": {
+        "path": "/bin/zsh"
+	},
+	"window.commandCenter": true
     //"editor.quickSuggestions": null
 }
