@@ -60,7 +60,7 @@
               :evernote_mode {:key :caps_lock :alone {:key :escape} :condi :Evernote}
               :slash_mode {:key :slash :alone {:key :slash}}
               ;;:open_bracket_mode {:key :open_bracket :alone {:key :open_bracket}}
-:close_bracket_mode {:key :close_bracket :alone {:key :close_bracket}}
+;;:close_bracket_mode {:key :close_bracket :alone {:key :close_bracket}}
               ;;:vscode_slash_mode {:key :slash :alone {:key :slash} :condi :VSCode}
               :vscode_tab_mode {:key :tab :alone {:key :tab} :condi :VSCode}
               :vscode_return_mode {:key :return_or_enter :alone {:key :return_or_enter} :condi :VSCode}
@@ -166,18 +166,18 @@
                      [:##spacebar :!Cspacebar]
                      [:f :left_shift :!browsers]
                      [:y :!OSgrave_accent_and_tilde] ;;switch from editor<->terminal
-
+                     
                      [:d :left_option]
                      [:##m :!!m]
                      ;[:##n :!Cm]
-
+                     
                      [:comma :!CTcomma] ;;switch editor/terminal panel left
                      [:period :!CTperiod] ;;swith editor/terminal right
                      [:backslash :!Cbackslash]
                      [:semicolon :!TOsemicolon]
                      [:quote :!Thyphen]
-                     [:open_bracket :!CTSleft_arrow] ;;increase selection
-                     [:close_bracket :!CTSright_arrow];;decrease selection
+                     [:##open_bracket :!COopen_bracket] ;;increase selection
+[:##close_bracket :!COclose_bracket] ;;decrease selection
                      [:quote :!Squote]
                      [:9 :!S9]
                      [:0 :!S0]
@@ -207,7 +207,7 @@
                      [:r :!Ff4] ;; rotate through search
                      [:##c :!Cc]
                      [:##v :!Cv]
-[:##z :!Cz]
+                     [:##z :!Cz]
 [:##s :!Cs] ;;save
 [:##d :!Cd]
 [:##x :!Cx]

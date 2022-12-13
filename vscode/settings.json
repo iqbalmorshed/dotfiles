@@ -41,6 +41,7 @@
     "vim.easymotion": true,
     "vim.useCtrlKeys": true,
     "vim.useSystemClipboard": true,
+	"vim.foldfix": true,
     // Insert mode
     // "vim.insertModeKeyBindings": [
     //   // In insert mode jj to escape
