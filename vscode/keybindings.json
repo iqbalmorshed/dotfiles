@@ -138,5 +138,39 @@
 		"key": "f12",
 		"command": "-editor.action.revealDefinition",
 		"when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+	},
+	{
+		"key": "shift+alt+cmd+n",
+		"command": "search.action.focusNextSearchResult",
+		"when": "hasSearchResult || inSearchEditor"
+	},
+	{
+		"key": "f4",
+		"command": "-search.action.focusNextSearchResult",
+		"when": "hasSearchResult || inSearchEditor"
+	},
+	{
+		"key": "shift+alt+1",
+		"command": "workbench.action.terminal.focusAtIndex1"
+	},
+	{
+		"key": "shift+alt+2",
+		"command": "workbench.action.terminal.focusAtIndex2"
+	},
+	{
+		"key": "shift+alt+3",
+		"command": "workbench.action.terminal.focusAtIndex3"
+	},
+	{
+		"key": "shift+alt+4",
+		"command": "workbench.action.terminal.focusAtIndex4"
+	},
+	{
+		"key": "shift+alt+5",
+		"command": "workbench.action.terminal.focusAtIndex5"
+	},
+	{
+		"key": "shift+alt+6",
+		"command": "workbench.action.terminal.focusAtIndex6"
 	}
 ]

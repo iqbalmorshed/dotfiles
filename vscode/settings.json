@@ -32,8 +32,7 @@
     "editor.insertSpaces": false,
     "editor.detectIndentation": false,
     "editor.minimap.maxColumn": 85,
-    "security.workspace.trust.untrustedFiles": "open",
-    "editor.formatOnSave": true,
+	"security.workspace.trust.untrustedFiles": "open",
     "editor.parameterHints.enabled": false,
     "editor.suggest.showTypeParameters": false,
     "editor.formatOnSaveMode": "modifications",
@@ -51,19 +50,27 @@
     //   }
     // ],
     // Visual mode
-    "vim.visualModeKeyBindings": [
-        // In visual mode i goes to insert mode
-        {
-            "before": ["i"],
-            "after": ["<Esc>", "i"]
-        }
-    ],
+    // "vim.visualModeKeyBindings": [
+    //     // In visual mode i goes to insert mode
+    //     {
+    //         "before": ["i"],
+    //         "after": ["<Esc>", "i"]
+    //     }
+    // ],
     // Escaping from vim for below commands
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["<leader>", "d"],
             "after": ["d", "d"]
         },
+		{
+            "before": ["n"],
+            "after": ["^"]
+        },
+		{
+			"before": ["m"],
+			"after": ["$"]
+		},
         {
             "before": ["<C-n>"],
             "commands": [":nohl"]
@@ -74,7 +81,7 @@
             "silent": true
         }
     ],
-    //"vim.leader": "<space>",
+    "vim.leader": "<space>",
     "vim.handleKeys": {
         // Select all
         "<C-a>": false,
@@ -99,6 +106,27 @@
     "terminal.integrated.automationProfile.osx": {
         "path": "/bin/zsh"
 	},
-	"window.commandCenter": true
+	"window.commandCenter": true,
+	"workbench.sideBar.location": "right",
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"editor.minimap.enabled": false,
+	"editor.inlineSuggest.enabled": true,
+	"vim.sneak": true,
+	"vim.sneakReplacesF": true,
+	"vim.sneakUseIgnorecaseAndSmartcase": true,
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"window.zoomLevel": 1,
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"prettier.bracketSpacing": false,
+	"prettier.enable": false,
     //"editor.quickSuggestions": null
 }

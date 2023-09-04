@@ -49,6 +49,7 @@
                     :Github ["^com\\.github\\.GitHubClient$"]
                     :Zoom ["^us\\.zoom\\.xos$"]
                     :Postman ["^com\\.postmanlabs\\.mac$"]
+                    :Slack ["^com\\.tinyspeck\\.slackmacgap$"]
                     :Evernote ["^com\\.evernote\\.Evernote$"]}
      :layers {:caps_mode {:key :caps_lock :alone {:key :escape}}
               :tab_mode {:key :tab}
@@ -58,12 +59,14 @@
               :zoom_mode {:key :caps_lock :alone {:key :escape} :condi :Zoom}
               :postman_mode {:key :caps_lock :alone {:key :escape} :condi :Postman}
               :evernote_mode {:key :caps_lock :alone {:key :escape} :condi :Evernote}
+              :slack_mode {:key :caps_lock :alone {:key :escape} :condi :Slack}
               :slash_mode {:key :slash :alone {:key :slash}}
               ;;:open_bracket_mode {:key :open_bracket :alone {:key :open_bracket}}
-;;:close_bracket_mode {:key :close_bracket :alone {:key :close_bracket}}
+              :close_bracket_mode {:key :close_bracket :alone {:key :close_bracket}}
               ;;:vscode_slash_mode {:key :slash :alone {:key :slash} :condi :VSCode}
               :vscode_tab_mode {:key :tab :alone {:key :tab} :condi :VSCode}
               :vscode_return_mode {:key :return_or_enter :alone {:key :return_or_enter} :condi :VSCode}
+              :vscode_semicolon_mode {:key :semicolon :alone {:key :semicolon} :condi :VSCode}
               :return_mode {:key :return_or_enter :alone {:key :return_or_enter}}}
 
      :simlayers {} ;; templates
@@ -105,17 +108,17 @@
                      [:##j :down_arrow] ;;move change file down
                      [:##k :up_arrow] ;;move change file up
                      [:##u :!Cp] ;;push
-[:##m :!CSp] ;;pull  
+                     [:##m :!CSp] ;;pull  
                      [:##l :!C2] ;;history
                      [:##i :!Cg] ;;go to commit summary box
                      [:##o :!Cb] ;;branch
                      ;[:##l :!Cg] ;;next tab 
                      [:##p :!Ct] ;;repository
                      ;;[:##h :!Cw]
-                     [:##semicolon :!Creturn_or_enter]
+                     [:##semicolon :!Creturn_or_enter]]}
 
                      ;[:##p :!Ct]]
-]} ;;close tab
+ ;;close tab
 
             {:des "when inside Zoom"
              :rules [:zoom_mode
@@ -130,8 +133,8 @@
                      ;;[:##v :!Cw]
                      [:h :!CSopen_bracket] ;previous tab
                      [:l :!CSclose_bracket] ;next tab
-                     [:semicolon :!Creturn_or_enter] ;send request
-                     ]}
+                     [:semicolon :!Creturn_or_enter]]} ;send request
+                     
             {:des "when inside Evernote"
              :rules [:evernote_mode
                      ;;[:##v :!Cw]
@@ -147,9 +150,25 @@
                      [:i :!Cn] ;new note
                      [:f :!OCf]
                      [:comma :!Copen_bracket] ;go previous
-                     [:period :!Cclose_bracket] ;go next
-                     ]}
-
+                     [:period :!Cclose_bracket]]} ;go next
+                     
+            {:des "when inside Slack"
+             :rules [:slack_mode
+                                 ;;[:##v :!Cw]
+                     [:##h :left_arrow :!browsers]
+                     [:##j :down_arrow :!browsers]
+                     [:##k :up_arrow :!browsers]
+                     [:##l :right_arrow :!browsers]
+                     [:##n :delete_or_backspace :!browsers]
+                     [:##semicolon :!Ssemicolon :!browsers]
+                     [:##u :!Cleft_arrow :!browsers]
+                     [:##o :!Cright_arrow :!browsers]
+                     [:p :!Ck] ;send to
+                     [:i :!Cn] ;new message
+                     [:f :!Cf]]}; search
+                                 ;[:comma :!Copen_bracket] ;go previous
+                                 ;[:period :!Cclose_bracket] ;go next
+         
             {:des "when inside vscode"
              :rules [:vscode_mode
                      ;;[:##v :!Cw]
@@ -166,7 +185,7 @@
                      [:##spacebar :!Cspacebar]
                      [:f :left_shift :!browsers]
                      [:y :!OSgrave_accent_and_tilde] ;;switch from editor<->terminal
-                     
+                     [:t :!Tgrave_accent_and_tilde]
                      [:d :left_option]
                      [:##m :!!m]
                      ;[:##n :!Cm]
@@ -177,18 +196,18 @@
                      [:semicolon :!TOsemicolon]
                      [:quote :!Thyphen]
                      [:##open_bracket :!COopen_bracket] ;;increase selection
-[:##close_bracket :!COclose_bracket] ;;decrease selection
+                     [:##close_bracket :!COclose_bracket] ;;decrease selection
                      [:quote :!Squote]
                      [:9 :!S9]
                      [:0 :!S0]
 
                      :vscode_tab_mode
-               		;;generic
-                     [:##j :!TO7] ;btt: click left monitor left half
-                     [:##k :!TO6] ;btt: click left monitor right half
-                     [:##l :!TO5] ;btt: click right monitor left half
-                     [:##semicolon :!TO4] ;btt: click right monitor right half
-                     [:##h :!Tleft_arrow] ;switch desktop left
+                   ;;generic
+                     [:h :!TO7] ;;btt: click left monitor left half
+                     [:j :!TO6] ;;btt: click left monitor right half
+                     [:k :!TO5] ;btt: click right monitor left half
+                     [:l :!TO4] ;btt: click right monitor right half
+                                          ;[:##h :!Tleft_arrow] ;switch desktop left
                      [:##quote :!Tright_arrow] ;switch desktop right
                      ;[:##m :!CTf];full-screen or un-full-screen
                      [:##m :!TOreturn_or_enter] ;zoom
@@ -204,20 +223,33 @@
                      [:backslash :!Cslash] ;;increase split window size	
                      :vscode_return_mode
                      [:t :!CSf] ;; search
-                     [:r :!Ff4] ;; rotate through search
+                     [:r :!COSn] ;; rotate through search
                      [:##c :!Cc]
                      [:##v :!Cv]
                      [:##z :!Cz]
-[:##s :!Cs] ;;save
-[:##d :!Cd]
-[:##x :!Cx]
-[:##q :!Cq]
-[:##f :!Cf]
-[:##b :!Cb] ;; show hide search bar
-               					;:vscode_slash_mode
-                     ;[:f :!Cf] ;;search
-                     ;[:a :!Cs] ;;save all files
-                     ]}
+                     [:##e :!SFf12]
+                     [:##s :!Cs] ;;save
+                     [:##d :!Cd]
+                     [:##x :!Cx]
+                     [:##q :!Cq]
+                     [:##f :!Cf]
+                     [:##b :!Cb] ;; show hide search bar
+                                              ;:vscode_slash_mode
+                                          ;[:f :!Cf] ;;search
+                                          ;[:a :!Cs] ;;save all files
+                     :vscode_semicolon_mode 
+                     [:a :!C1] 
+                     [:s :!C2]
+                     [:d :!C3]
+                     [:f :!C4]
+                     [:g :!C5]
+                     [:h :!C6]
+                     [:z :!SO1]
+                     [:x :!SO2]
+                     [:c :!SO3]
+                     [:v :!SO4]
+                     [:b :!SO5]]}
+                     
             {:des "caps lock layer"
              :rules [:caps_mode
                      [:##h :left_arrow :!browsers]
@@ -230,30 +262,30 @@
                      [:##o :!Cright_arrow :!browsers]
                      [:##p :!Cp]
                      [:##spacebar :!Cspacebar]
-                     [:f :left_shift :!browsers]
+                     [:f :left_shift :!browsers]]}
                      ;;[:##c :!Cc]
                      ;;[:##v :!Cv]
-                     ]}
-      		;; {:des "semicolon layer"
+                     
+          ;; {:des "semicolon layer"
             ;;  :rules [:semicolon_mode
             ;;          [:r [:semicolon :g]]]}
             {:des "Tab mode layer"
              :rules [:tab_mode
-                     [:##j :!TO7] ;btt: click left monitor left half
-                     [:##k :!TO6] ;btt: click left monitor right half
-                     [:##l :!TO5] ;btt: click right monitor left half
-                     [:##semicolon :!TO4] ;btt: click right monitor right half
-                     [:##h :!Tleft_arrow] ;switch desktop left
+                     [:h :!TO7] ;btt: click left monitor left half
+                     [:j :!TO6] ;btt: click left monitor right half
+                     [:k :!TO5] ;btt: click right monitor left half
+                     [:l :!TO4] ;btt: click right monitor right half
+                                          ;[:##h :!Tleft_arrow] ;switch desktop left
                      [:##quote :!Tright_arrow] ;switch desktop right
                      [:##m :!TOreturn_or_enter] ;zoom
-               		;[:##m :!CTf];full-screen or un-full-screen
+                   ;[:##m :!CTf];full-screen or un-full-screen
                      [:##n :!Cm] ;minimize
                      [:##comma :!CTOleft_arrow]
                      [:##period :!CTOright_arrow]
                      [:##open_bracket :!TOleft_arrow]
                      [:##close_bracket :!TOright_arrow]
 
-               					 ;[:slash :p]
+                          ;[:slash :p]
                      [:y [:km "Window: switch full-screen window"]]]}
             ;; {:des "Open application"
             ;;  :rules [[[:semicolon :c] [:km "Chrome: Open Personal profile"]]
@@ -268,24 +300,26 @@
             ;;          [[:a :n] [:km "Notion: Activate"]]]}
             {:des "Open application"
              :rules [:slash_mode
-                     [:b [:km "Obsidian: Activate"]]
+                     [:b [:!COc]] ;;clipBoard history
                      [:c [:km "Chrome: Open Personal profile"]]
                      [:d [:km "Word: Activate"]]
                      [:e [:km "Evernote: Activate"]]
-                     [:f [:km "Foxit Reader: Activate"]]
+                     [:f [:km "MacGPT: Activate"]]
                      [:g [:km "Github Desktop: Activate"]]
-                     [:j [:km "Jira: Activate"]]
+                     [:a [:km "Jira: Activate"]]
                      [:k [:km "KM: Activate"]]
                      [:m [:km "MySocials: Activate"]]
                      [:n [:km "Notion: Activate"]]
-                     [:o [:km "VSCode: Open Project"]]
+                     [:o [:km "OneNote: Activate"]]
+                    ;; [:o [:km "VSCode: Open Project"]]
                      [:p [:km "PGAdmin: Activate"]]
                      [:r [:km "Postman: Activate"]]
                      [:s [:km "Slack: Activate"]]
-               					 ;[:s [:km "Slack: Activate"]]
+                          ;[:s [:km "Slack: Activate"]]
                      [:t [:km "Terminal: activate"]]
                      [:v [:km "VSCode: Activate"]]
                      [:w [:km "Chrome: Open Work Profile"]]
+                     [:x :!TCS4] ;;take screenshot clip and copy
                      [:z [:km "Zoom: Activate"]]
                      [:grave_accent_and_tilde [:km "VSCode: Open Karabiner Goku"]]
                      [:1 [:km "VSCode: Open Iotah App"]]
@@ -304,9 +338,9 @@
 
             {:des "Some Misc. Tasks"
              :rules [:close_bracket_mode
-                     [:c :!COc]
-                     [:x :!TCS4]] ;;take screenshot clip
-             }
+                     [:c :!COc]]}
+                      
+             
 
             {:des "On hold Enter"
              :rules [:return_mode
