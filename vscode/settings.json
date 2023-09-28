@@ -107,7 +107,6 @@
         "path": "/bin/zsh"
 	},
 	"window.commandCenter": true,
-	"workbench.sideBar.location": "right",
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
@@ -119,7 +118,6 @@
 	"[jsonc]": {
 		"editor.defaultFormatter": "vscode.json-language-features"
 	},
-	"window.zoomLevel": 1,
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "vscode.typescript-language-features"
 	},
@@ -127,6 +125,7 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"prettier.bracketSpacing": false,
-	"prettier.enable": false,
+	"workbench.sideBar.location": "right",
+	"window.zoomLevel": 1,
     //"editor.quickSuggestions": null
 }
