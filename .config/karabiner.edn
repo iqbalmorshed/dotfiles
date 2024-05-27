@@ -50,6 +50,7 @@
                     :Zoom ["^us\\.zoom\\.xos$"]
                     :Postman ["^com\\.postmanlabs\\.mac$"]
                     :Slack ["^com\\.tinyspeck\\.slackmacgap$"]
+					:Warp ["^dev\\.warp\\.Warp-Stable$"]
                     :Evernote ["^com\\.evernote\\.Evernote$"]}
      :layers {:caps_mode {:key :caps_lock :alone {:key :escape}}
               :tab_mode {:key :tab}
@@ -67,6 +68,7 @@
               :vscode_tab_mode {:key :tab :alone {:key :tab} :condi :VSCode}
               :vscode_return_mode {:key :return_or_enter :alone {:key :return_or_enter} :condi :VSCode}
               :vscode_semicolon_mode {:key :semicolon :alone {:key :semicolon} :condi :VSCode}
+			  :warp_mode {:key :caps_lock :alone {:key :escape} :condi :Warp}
               :return_mode {:key :return_or_enter :alone {:key :return_or_enter}}}
 
      :simlayers {} ;; templates
@@ -103,8 +105,8 @@
             {:des "when inside Github"
              :rules [:github_mode
                      ;;[:##v :!Cw]
-                     ;[:##h :!C1] ;;changes  
-                     [:##h [:km "Github Desktop: Go to Changed Files"]]
+                     [:##h :!C1] ;;changes  
+                     ;[:##h [:km "Github Desktop: Go to Changed Files"]]
                      [:##j :down_arrow] ;;move change file down
                      [:##k :up_arrow] ;;move change file up
                      [:##u :!Cp] ;;push
@@ -169,6 +171,13 @@
                      [:f :!Cf]]}; search
                                  ;[:comma :!Copen_bracket] ;go previous
                                  ;[:period :!Cclose_bracket] ;go next
+   			{:des "when inside Warp Terminal"
+			 :rules [:warp_mode
+        			 [:o :!Ct] ;open new tab
+					 [:n :!Cw] ;close tab
+					 [:h :!STtab]
+      					 [:l :!Ttab]
+			 ]}
          
             {:des "when inside vscode"
              :rules [:vscode_mode
@@ -177,7 +186,7 @@
                      [:##j :down_arrow :!browsers]
                      [:##k :up_arrow :!browsers]
                      [:##l :right_arrow :!browsers]
-                     [:##n :delete_or_backspace :!browsers]
+                    ;;  [:##n :delete_or_backspace :!browsers]
                      [:##i :!Cd] ;;select word/multiple words
                      ;;[:##semicolon :!Ssemicolon :!browsers]
                      [:##u :!Cleft_arrow :!browsers]
@@ -190,11 +199,11 @@
                      [:d :left_option]
                      [:##m :!!m]
                      ;[:##n :!Cm]
-                     
+
                      [:comma :!CTcomma] ;;switch editor/terminal panel left
                      [:period :!CTperiod] ;;swith editor/terminal right
                      [:backslash :!Cbackslash]
-                     [:semicolon :!TOsemicolon]
+                     [:n :!TOsemicolon]
                      [:quote :!Thyphen]
                      [:##open_bracket :!COopen_bracket] ;;increase selection
                      [:##close_bracket :!COclose_bracket] ;;decrease selection
@@ -215,8 +224,8 @@
                      [:##n :!Cm] ;minimize
                      [:##comma :!CTOleft_arrow]
                      [:##period :!CTOright_arrow]
-                     [:##open_bracket :!TOleft_arrow]
-                     [:##close_bracket :!TOright_arrow]
+                     [:##left_arrow :!TOleft_arrow] ;rectangle: move window to left half
+                     [:##right_arrow :!TOright_arrow] ;rectable: move window to right half
                      [:y :!Tgrave_accent_and_tilde]
 
                      [:9 :!CTOopen_bracket]
@@ -238,8 +247,8 @@
                                               ;:vscode_slash_mode
                                           ;[:f :!Cf] ;;search
                                           ;[:a :!Cs] ;;save all files
-                     :vscode_semicolon_mode 
-                     [:a :!C1] 
+                     :vscode_semicolon_mode
+                     [:a :!C1]
                      [:s :!C2]
                      [:d :!C3]
                      [:f :!C4]
@@ -283,8 +292,8 @@
                      [:##n :!Cm] ;minimize
                      [:##comma :!CTOleft_arrow]
                      [:##period :!CTOright_arrow]
-                     [:##open_bracket :!TOleft_arrow]
-                     [:##close_bracket :!TOright_arrow]
+                     [:##left_arrow :!TOleft_arrow] ;rectangle: move window to left half
+                     [:##right_arrow :!TOright_arrow] ;rectable: move window to right half
 
                           ;[:slash :p]
                      [:y [:km "Window: switch full-screen window"]]]}
@@ -307,6 +316,7 @@
                      [:e [:km "Evernote: Activate"]]
                      [:f [:km "MacGPT: Activate"]]
                      [:g [:km "Github Desktop: Activate"]]
+                     [:h [:km "Chrome: Open Home profile"]]
                      [:a [:km "Jira: Activate"]]
                      [:k [:km "KM: Activate"]]
                      [:m [:km "Work Gmail: Activate"]]
@@ -330,10 +340,11 @@
                      [:4 [:km "VSCode: Open Iotah Web"]]
                      [:5 [:km "VSCode: Open Switch Web"]]
                      [:6 [:km "VSCode: Open Iotemeter Web"]]
+                     [:7 [:km "VSCode: Open SAO Device Simulator"]]
                      :close_bracket_mode
                      [:g [:km "Gmail-WorkColab: Activate"]]
                      [:s [:km "Slack-WorkColab: Activate"]]
-                     [:w [:km "WhatsApp-MySocials: Activate"]]
+                     [:w [:km "WhatsApp: Activate"]]
                      [:e [:km "Gmail-MySocials: Activate"]]
                      [:t [:km "Telegram-MySocials: Activate"]]
                      [:r [:km "Messenger-MySocials: Activate"]]]}
