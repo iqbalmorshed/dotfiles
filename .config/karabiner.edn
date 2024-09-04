@@ -51,9 +51,12 @@
                     :Postman ["^com\\.postmanlabs\\.mac$"]
                     :Slack ["^com\\.tinyspeck\\.slackmacgap$"]
 					:Warp ["^dev\\.warp\\.Warp-Stable$"]
+					:SctApp ["^com\\.webcatalog\\.juli\\.custom-1673474485589"]
+					:Obsidian ["^md\\.obsidian\\.Obsidian$"]
                     :Evernote ["^com\\.evernote\\.Evernote$"]}
      :layers {:caps_mode {:key :caps_lock :alone {:key :escape}}
               :tab_mode {:key :tab}
+         	  :quote_mode {:key :quote}
               :chrome_mode {:key :caps_lock :alone {:key :escape} :condi :Chrome}
               :vscode_mode {:key :caps_lock :alone {:key :escape} :condi :VSCode}
               :github_mode {:key :caps_lock :alone {:key :escape} :condi :Github}
@@ -69,6 +72,7 @@
               :vscode_return_mode {:key :return_or_enter :alone {:key :return_or_enter} :condi :VSCode}
               :vscode_semicolon_mode {:key :semicolon :alone {:key :semicolon} :condi :VSCode}
 			  :warp_mode {:key :caps_lock :alone {:key :escape} :condi :Warp}
+			  :sctapp_mode {:key :caps_lock :alone {:key :escape} :condi :SctApp}
               :return_mode {:key :return_or_enter :alone {:key :return_or_enter}}}
 
      :simlayers {} ;; templates
@@ -76,6 +80,7 @@
      :templates {:km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
                  :open "open \"%s\""
                  :code "/usr/local/bin/code \"%s\"" ;;full path of the app is needed if installed using brew
+				 :alfred "osascript -e 'tell application \"Alfred 5\" to run trigger \"%s\" in workflow \"%s\"'"
                  :hsl        "/usr/local/bin/hs -A -n -q -t 0.1 -c 'hs.application.launchOrFocus(\"%s\")'"}
 
      :main [;; 	 {:des "a to 1, b to 2, c to insert 1 2 3"
@@ -178,6 +183,14 @@
 					 [:h :!STtab]
       					 [:l :!Ttab]
 			 ]}
+  			 
+  			 {:des "when inside SctApp"
+   			 :rules [:sctapp_mode
+               [:j :!Cr] ;refresh page
+               [:k :!SCh] ;home page
+               [:l :!SCclose_bracket] ;next subspace
+               [:h :!SCopen_bracket] ;previous subspace
+               ]}
          
             {:des "when inside vscode"
              :rules [:vscode_mode
@@ -313,7 +326,7 @@
                      [:b [:!COc]] ;;clipBoard history
                      [:c [:km "Chrome: Open Personal profile"]]
                      [:d [:km "Word: Activate"]]
-                     [:e [:km "Evernote: Activate"]]
+                     [:e [:km "Obsidian: Activate"]]
                      [:f [:km "MacGPT: Activate"]]
                      [:g [:km "Github Desktop: Activate"]]
                      [:h [:km "Chrome: Open Home profile"]]
@@ -321,7 +334,8 @@
                      [:k [:km "KM: Activate"]]
                      [:m [:km "Work Gmail: Activate"]]
                      [:n [:km "Notion: Activate"]]
-                     [:o [:km "OneNote: Activate"]]
+                    ; [:o [:km "OneNote: Activate"]]
+					  [:o [:km "Obsidian: Activate"]]
                     ;; [:o [:km "VSCode: Open Project"]]
                      [:p [:km "PGAdmin: Activate"]]
                      [:r [:km "Postman: Activate"]]
@@ -352,8 +366,11 @@
             {:des "Some Misc. Tasks"
              :rules [:close_bracket_mode
                      [:c :!COc]]}
-                      
-             
+      					 
+     		{:des "Quote mode"
+			 :rules [:quote_mode
+         			[:e [:alfred "morshed" "com.alfredapp.iqbaltest"]]
+					[:x [:alfred "closenotification " "com.alfredapp.vitor.bannerbegone"]]]}
 
             {:des "On hold Enter"
              :rules [:return_mode
@@ -365,3 +382,4 @@
                      [:##x :!Cx]
                      [:##q :!Cq]
                      [:##f :!Cf]]}]}
+                      
