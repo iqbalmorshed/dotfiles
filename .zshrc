@@ -39,3 +39,6 @@ alias gc='git clean -fd'
 alias gcb='git checkout -b'
 alias gc='git checkout'
 alias gcfd='git clean -fd'
+alias gpl='git pull'
+alias gps='git push'
+
