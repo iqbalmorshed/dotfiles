@@ -11,11 +11,6 @@
     "explorer.confirmDelete": false,
     "gitlens.views.compare.files.layout": "list",
     "editor.renderWhitespace": "none",
-    "terminal.integrated.profiles.osx": {
-        "zsh": {
-            "path": "/bin/zsh"
-        }
-    },
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "prettier.arrowParens": "avoid",
@@ -96,16 +91,9 @@
         // Paste
         "<C-v>": false
     },
-    "tabnine.experimentalAutoImports": false,
-    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-    "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.vim",
     "diffEditor.codeLens": true,
     "git.mergeEditor": false,
     "git.path": "",
-    "terminal.integrated.defaultProfile.osx": "zsh",
-    "terminal.integrated.automationProfile.osx": {
-        "path": "/bin/zsh"
-	},
 	"window.commandCenter": true,
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -125,7 +113,47 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"prettier.bracketSpacing": false,
-	"workbench.sideBar.location": "right",
 	"window.zoomLevel": 1,
+	"files.associations": {
+		"*.jsx": "javascriptreact"
+	},
+	"editor.wordWrap": "on",
+	"code-runner.clearPreviousOutput": true,
+	"code-runner.saveFileBeforeRun": true,
+	"editor.snippetSuggestions": "top",
+	"emmet.showSuggestionsAsSnippets": true,
+	"figma.autocompleteBlocks": true,
+	"workbench.editor.tabSizing": "shrink",
+	"github.copilot.enable": {
+		"*": true,
+		"plaintext": false,
+		"markdown": true,
+		"scminput": false
+	},
+	"github.copilot.nextEditSuggestions.enabled": true,
+	"terminal.integrated.defaultProfile.osx": "zsh",
+	"terminal.integrated.inheritEnv": false,
+	"terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "/bin/zsh",
+		}
+    },
+	"terminal.integrated.automationProfile.osx": {
+		"path": "/bin/zsh",
+		"args": ["-c", "VSCODE_MINIMAL=1 exec zsh"]
+	},
+	"gitlens.ai.model": "vscode",
+	"gitlens.ai.vscode.model": "copilot:gpt-4.1",
+	"terminal.integrated.suggest.enabled": true,
+	"chat.viewSessions.orientation": "stacked",
+	"appModernization.commandTimeout": 36000,
+	"claudeCode.preferredLocation": "panel",
+	"claudeCode.selectedModel": "opus",
+	"git.openRepositoryInParentFolders": "always",
+	"chat.mcp.gallery.enabled": true,
+	"atlascode.rovodev.showEntitlementNotifications": false,
+	"atlascode.jira.explorer.fetchAllQueryResults": false,
+	"docker.extension.enableComposeLanguageServer": false,
+	
     //"editor.quickSuggestions": null
 }

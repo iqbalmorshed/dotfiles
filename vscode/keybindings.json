@@ -172,5 +172,18 @@
 	{
 		"key": "shift+alt+6",
 		"command": "workbench.action.terminal.focusAtIndex6"
+	},
+	{
+		"key": "ctrl+alt+n",
+		"command": "-code-runner.run"
+	},
+	{
+		"key": "backspace",
+		"command": "-paredit.deleteBackward",
+		"when": "calva:keybindingsEnabled && editorTextFocus && !calva:cursorInComment && !editorHasMultipleSelections && !editorReadOnly && editorLangId == 'clojure' && paredit:keyMap == 'strict'"
+	},
+	{
+		"key": "ctrl+alt+cmd+m",
+		"command": "code-runner.run"
 	}
 ]
