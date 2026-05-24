@@ -152,8 +152,14 @@
 	"git.openRepositoryInParentFolders": "always",
 	"chat.mcp.gallery.enabled": true,
 	"atlascode.rovodev.showEntitlementNotifications": false,
-	"atlascode.jira.explorer.fetchAllQueryResults": false,
+	"atlascode.jira.explorer.fetchAllQueryResults": true,
 	"docker.extension.enableComposeLanguageServer": false,
+	"atlascode.bitbucket.enabled": false,
+	"workbench.colorTheme": "Dark Modern",
+	"workbench.editorAssociations": {
+		"*.copilotmd": "vscode.markdown.preview.editor",
+		"*.pdf": "latex-workshop-pdf-hook"
+	},
 	
     //"editor.quickSuggestions": null
 }
