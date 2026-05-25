@@ -1,7 +1,103 @@
-.cache
+# Recommended .gitignore for ~/.dotfiles
+# Replace the existing .gitignore with this (or merge what's useful).
+#
+# Goal: keep caches, machine-specific junk, and accidentally-leaky files
+# out of git. The dotfiles repo should contain config you'd be willing
+# to share publicly (after a privacy review).
+
+# ---------------------------------------------------------------------------
+# macOS noise
+# ---------------------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+
+# ---------------------------------------------------------------------------
+# Editor backups
+# ---------------------------------------------------------------------------
+*.swp
+*.swo
+*~
+.zshrc.save
+.bashrc.save
+
+# ---------------------------------------------------------------------------
+# Caches that should never be in dotfiles
+# ---------------------------------------------------------------------------
+.clj-kondo/.cache/
+.npm/_cacache/
+.cache/
+.tmp/
+
+# ---------------------------------------------------------------------------
+# Karabiner — using Goku: karabiner.edn is source of truth, karabiner.json
+# is a compiled artifact. Drop the JSON output + the automatic_backups.
+# ---------------------------------------------------------------------------
 **/karabiner.json
-configstore/*
-.config/raycast/extensions/*
-.config/raycast/config.json
-.config/com.add0n.node/*
-.config/configstore/update-notifier-npm.json
+.config/karabiner/automatic_backups/
+
+# ---------------------------------------------------------------------------
+# Auto-generated tool configs (regenerate themselves)
+# ---------------------------------------------------------------------------
+.config/configstore/
+.config/com.add0n.node/
+.config/coc/
+.config/cagent/
+.config/git/
+.config/shopify/
+.config/iterm2/
+
+# Clojure-LSP caches
+.lsp/
+.clj-kondo/
+
+# ---------------------------------------------------------------------------
+# Raycast — relies on Cloud Sync, not git
+# Don't commit the extensions tree; it's the app's job to install/manage.
+# ---------------------------------------------------------------------------
+.config/raycast/
+
+# ---------------------------------------------------------------------------
+# Dead language ecosystems (only ignore if you're not actively using them)
+# ---------------------------------------------------------------------------
+.config/xbuild/
+.config/NuGet/
+
+# ---------------------------------------------------------------------------
+# Secrets / credentials — should NEVER be committed
+# ---------------------------------------------------------------------------
+.ssh/id_*
+.ssh/known_hosts
+.aws/
+.gnupg/
+.netrc
+.npmrc
+.pypirc
+*.pem
+*.key
+*_rsa
+*_dsa
+*_ecdsa
+*_ed25519
+# Env files
+.env
+.env.local
+.env.*.local
+
+# ---------------------------------------------------------------------------
+# Brewfile.lock.json — debated; pin if you want exact reproducibility,
+# ignore if you want fresh versions on each install
+# ---------------------------------------------------------------------------
+# Brewfile.lock.json
+
+# ---------------------------------------------------------------------------
+# Local-only overrides (use a .local file pattern)
+# Lets you have machine-specific tweaks that don't go in git.
+# ---------------------------------------------------------------------------
+.zshrc.local
+.gitconfig.local
+*.local
