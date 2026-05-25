@@ -214,6 +214,27 @@ These apps sync state to vendor cloud, not git. Enable each one *now* so the sta
 - [ ] **iCloud Drive** → confirm signed in with personal Apple ID, files are syncing
 - [ ] **Dropbox** (if used) → confirm signed into personal account, not work
 
+### Chrome profiles (sync-based)
+
+Chrome passwords on macOS are encrypted with a key in the macOS Keychain, so a raw file-copy of `~/Library/Application Support/Google/Chrome/` is **not** a valid backup. Use Sync.
+
+For each **personal** profile:
+
+- [x] Signed in with personal Google account → Chrome Sync enabled → "Sync everything" (done 2026-05-25)
+- [ ] Confirm `chrome://settings/syncSetup` shows "Synced to <account>" with a recent timestamp for each personal profile
+- [ ] (Optional, recommended) Set a sync passphrase: Settings → Sync and Google services → Encryption options. Zero-knowledge encryption for passwords, but no recovery if forgotten — only enable if the passphrase is in your password manager
+- [ ] (Insurance) Export passwords once via `chrome://password-manager/settings` → CSV → save to flash drive. Shred the CSV after successful import on the new Mac
+
+For the **work** profile (will not survive reset):
+
+- [ ] Identify which profile directory corresponds to the work email — open `~/Library/Application Support/Google/Chrome/Local State` (JSON), look at `profile.info_cache`, match name/email to directory (`Default`, `Profile 1`, etc.)
+- [ ] In the work profile, open `chrome://password-manager` — verify no personal passwords drifted in. If any did, copy them out to the matching personal profile
+- [ ] Export work profile bookmarks to HTML → review in a text editor → manually port over any personal bookmarks that landed there
+- [ ] In Chrome work profile: Settings → "You and Google" → Turn off sync **first**, then Sign out. Order matters — signing out before disabling sync can purge local state before sync finishes
+- [ ] Chrome → profile picker → Manage profiles → Remove the work profile
+
+**Sessions / open tabs:** the literal `Sessions/` files don't port across machines (paths and profile IDs are baked in). Handled via the TabMe extension — categorized tabs exported and saved to `~/Dropbox/config_backup/`. ✓ done.
+
 ---
 
 ## Stage 6 — Run the inventory snapshot
@@ -248,6 +269,48 @@ Do **not** copy:
 
 ---
 
+## Stage 7b — App-specific personal state in dotfile-adjacent directories
+
+The Stage 7 inventory covers the large content directories. A handful of smaller hidden directories outside `~/.dotfiles/` hold real personal state that doesn't sync via any cloud. Triage:
+
+### Definitely back up to flash drive
+
+- [ ] **`~/.n8n/`** — workflows + encrypted credentials live in `database.sqlite`; the decryption key lives in `config` (the `encryptionKey` field). **Both files must travel together** — backing up the DB without `config` leaves credentials as unrecoverable ciphertext. The directory is small; copy the whole thing.
+  - Optional belt-and-suspenders: also run `n8n export:workflow --all --output=workflows.json`. JSON dump is format-independent and survives future n8n schema changes. **Do not** export credentials decrypted to disk — keep them in the encrypted DB.
+  - Restore on new Mac: install n8n, stop it, replace the freshly-created `~/.n8n/` with the archived copy, restart.
+- [ ] **`~/.warp/`** — Warp terminal local config. If you've signed in to a Warp account, also cloud-synced; otherwise this is the only copy.
+- [ ] **`~/.codex/`, `~/.rovodev/`** — AI tool configs. Likely just auth tokens (regenerable), but if you've customized prompts, memory files, or have local history worth keeping, those matter. Quick `ls -la` on each to confirm what's inside before deciding.
+- [ ] **`~/.rest-client/`** — saved REST request collections (VS Code REST Client extension and similar).
+- [ ] **`~/.vim/`** — vim config and plugins. Skip `.viminfo` — recent-files list may reveal work paths; regenerate fresh on new Mac.
+
+### Sanitize-then-decide (command history files)
+
+These can be useful (auto-suggestions repopulate faster on the new Mac), but all four can leak work hostnames, internal IPs, API tokens, or DB connection strings. For each, grep first:
+
+```bash
+grep -iE 'sct|<work-domain>|<vpn-host>|password=|token=|aws_secret|api_key' ~/.zsh_history | head
+```
+
+- [ ] `~/.zsh_history` — usually the biggest leak risk for a shell user
+- [ ] `~/.bash_history` — small, low value, but check
+- [ ] `~/.psql_history` — work query history; usually safer to leave behind entirely
+- [ ] `~/.node_repl_history`, `~/.python_history`, `~/.rediscli_history` — same drill; sanitize or skip
+
+If the file is mostly personal, scrub the work lines by hand and back up. If saturated with work commands, leave it — muscle memory rebuilds on the new Mac in a few weeks.
+
+### Leave behind explicitly (work credentials or trivially regenerable)
+
+Already in the master "leave" list, repeated here for completeness so you don't accidentally back them up while reaching for the n8n directory:
+
+- `~/.pgadmin/`, `~/.pgpass` — PostgreSQL credentials, almost certainly contain SCT DB connection strings. **Do not back up.**
+- `~/.aws/`, `~/.ssh/`, `~/.docker/`, `~/.kube/`, `~/.minikube/`, `~/.k8slens/` — work configs/credentials
+- `~/.copilot/` — GitHub Copilot auth, regenerate
+- `~/.ansible/`, `~/.terraform.d/` — IaC state, almost certainly work-related; verify nothing personal slipped in, then leave
+- `~/.m2/`, `~/.gradle/`, `~/.npm/`, `~/.nvm/`, `~/.composer/`, `~/.gem/`, `~/.bundle/`, `~/.cocoapods/`, `~/.dotnet/`, `~/.nuget/`, `~/.aspnet/`, `~/.swiftpm/`, `~/.android/`, `~/.flipper/`, `~/.cagent/`, `~/.cache/`, `~/.local/`, `~/.pyenv/`, `~/.nexe/` — language/tool caches, regenerate
+- `~/.adobe/`, `~/.anydesk/`, `~/.iterm2/`, `~/.dropbox/` — regenerated on app reinstall + sign-in
+
+---
+
 ## Stage 8 — Final cleanup before reset
 
 The day of (or morning of) the reset.
@@ -270,6 +333,10 @@ Then proceed to the factory reset.
 - [ ] Brewfile is fresh (includes `vscode "..."` and `npm "..."` lines) and pushed
 - [ ] Dropbox menu bar shows "Up to date" — `~/Dropbox/config_backup/` has current KM `.kmsync` and `Alfred.alfredpreferences/`
 - [ ] Raycast / VS Code Settings Sync / JetBrains / 1Password Cloud Sync are confirmed active
+- [ ] Chrome Sync confirmed for each personal profile (recent sync timestamp); work profile signed out and removed
+- [ ] Chrome password CSV insurance export saved to flash drive (optional)
+- [ ] `~/.n8n/` (database.sqlite + config) backed up to flash drive; n8n workflow JSON dump alongside (optional)
+- [ ] Stage 7b hidden dirs backed up; command-history files sanitized or skipped
 - [ ] Personal-data inventory on flash drive
 - [ ] handoff-evidence/ screenshots saved off the laptop
 - [ ] All sign-outs completed
